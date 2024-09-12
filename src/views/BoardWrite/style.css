@@ -1,0 +1,167 @@
+#board-write-wrap {
+  width: 800px;
+  min-height: 900px;
+  margin: auto;
+}
+
+.board-write-top {
+  margin-top: 50px;
+}
+
+.board-title {
+  height: 100px;
+  font-size: 32px;
+  border-bottom: 1px solid #7d7d7d;
+  display: flex;
+  align-items: center;
+}
+
+.board-category {
+  width: 130px;
+  display: inline-block;
+  position: relative;
+  margin: auto 0px;
+}
+
+.board-dropdown-box {
+  cursor: pointer;
+  display: flex;
+  margin-right: 20px;
+  border: 1px solid rgba(4, 4, 4, 0.137);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+  align-items: center;
+  justify-content: center;
+}
+
+.board-dropdown-icon {
+  width: 20px;
+  height: 20px;
+  background-image: url(../../assets/image/dropdown-icon.png);
+  background-size: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.board-dropdown-content {
+  background-color: #fff;
+  border: 1px solid #ebebeb;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  min-width: 160px;
+  position: absolute;
+  z-index: 1;
+}
+
+.board-dropdown-content-item {
+  padding: 12px 48px 12px 16px;
+  cursor: pointer;
+  color: rgba(34, 34, 34, 0.8);
+  max-width: 200px;
+
+  white-space: nowrap; /* 줄바꿈을 방지합니다. */
+  overflow: hidden; /* 내용이 넘칠 경우 숨깁니다. */
+  text-overflow: ellipsis; /* 내용이 넘칠 경우 '...'로 표시합니다. */
+}
+
+.board-dropdown-content-item:hover {
+  background-color: #bbbbbb35;
+}
+
+.board-write-mid {
+  display: flex;
+}
+
+.board-main-left {
+  width: 100%;
+}
+
+.board-main-right {
+  width: 10%;
+  margin-left: 20px;
+}
+
+.board-registered {
+  border: 1px solid rgba(0, 0, 0, 0.134);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 70px;
+  height: 50px;
+}
+
+.board-attach-icon {
+  /* outline: 1px solid black; */
+  width: 30px;
+  height: 30px;
+  padding: 20px;
+  background-image: url(../../assets/image/img-attach.png);
+  background-size: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+
+  text-align: center;
+  line-height: 6em;
+}
+
+.board-input-title > input {
+  width: 788px;
+  height: 40px;
+  padding-left: 10px;
+  border-radius: 5px;
+  border: 1px solid rgba(4, 4, 4, 0.137);
+  margin-bottom: 10px;
+}
+
+.function-line {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0px;
+}
+
+.board-bottom-tag > input {
+  width: 788px;
+  height: 40px;
+  padding-left: 10px;
+  border-radius: 5px;
+  border: 1px solid rgba(4, 4, 4, 0.137);
+  margin: 20px 0px;
+}
+
+.board-bottom-tag {
+  margin-top: 30px;
+  border-top: 1px solid rgba(0, 0, 0, 0.137);
+  min-height: 140px;
+}
+
+.tag-delete-icon {
+  width: 20px;
+  height: 20px;
+  background-image: url(../../assets/image/tag-delete-icon.png);
+  background-size: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.tag-list {
+  display: flex;
+  margin-right: 10px;
+  align-items: center;
+}
+
+.tag-list-area {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.tag-content {
+  background-color: #bbbbbb46;
+  border-radius: 5px;
+  padding: 4px 8px;
+}

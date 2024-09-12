@@ -1,0 +1,187 @@
+.admin-categori-mid-left > div {
+  width: 100px;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.682);
+}
+
+.admin-categori-mid-left {
+  margin-left: 90px;
+}
+#admin-categori-wrap {
+  width: 1500px;
+  min-height: 900px;
+  margin: auto;
+}
+
+.admin-categori-top {
+  width: 730px;
+  margin: 40px 360px 30px 410px;
+  height: 50px;
+  align-items: center;
+  display: flex;
+}
+
+.admin-categori-title {
+  font-size: 25px;
+}
+
+.admin-categori-mid {
+  display: flex;
+  min-height: 800px;
+}
+.admin-categori-classification,
+.userList-Item {
+  display: flex;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.098);
+}
+
+.admin-categori-classification {
+  width: 735px;
+  background-color: rgba(0, 0, 0, 0.037);
+  border: none;
+}
+
+.admin-categori-item-check-box,
+.checkBox {
+  width: 50px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-categori-item-check-box input,
+.checkBox input {
+  zoom: 1.4;
+}
+
+.categori-classification-categoryId,
+.admin-categori-item-id {
+  display: flex;
+  align-items: center;
+  width: 50px;
+  height: 56px;
+  padding: 0px 10px;
+  justify-content: center;
+}
+
+.categori-classification-userNickname,
+.admin-categori-item-nickName {
+  display: flex;
+  align-items: center;
+  width: 180px;
+  height: 56px;
+  justify-content: center;
+}
+
+.categori-classification-categoryName,
+.admin-categori-item-title {
+  display: flex;
+  align-items: center;
+  width: 150px;
+  height: 56px;
+  padding: 0px 10px;
+  justify-content: center;
+}
+
+.categori-classification-writeDateTime,
+.admin-categori-item-writerDate {
+  display: flex;
+  align-items: center;
+  width: 130px;
+  height: 56px;
+  padding: 0px 10px;
+  justify-content: center;
+}
+
+.admin-categori-actions,
+.admin-categori-item-action {
+  display: flex;
+  align-items: center;
+  width: 80px;
+  height: 56px;
+  padding: 0px 10px;
+  justify-content: center;
+}
+
+.actions-icon-img {
+  width: 20px;
+  height: 30px;
+  /* padding: 20px; */
+  background-image: url(../../../assets/image/delete-icon.png);
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+/*  */
+.admin-categori-mid {
+  display: flex;
+}
+
+.admin-menu-userList,
+.admin-menu-announcement,
+.admin-menu-post,
+.admin-menu-category-bold {
+  margin-top: 15px;
+  font-size: 20px;
+}
+
+.admin-categori-mid-right {
+  margin-left: 220px;
+}
+
+.admin-menu-category-bold {
+  font-weight: 600;
+}
+
+/* 검색 input */
+
+.admin-categori-add {
+  border: 1px solid rgba(120, 90, 90, 0.194);
+  width: 80px;
+  height: 40px;
+  border-radius: 5px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.admin-categori-add-container {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.admin-categori-add-container > input {
+  width: 619px;
+  height: 40px;
+  border: 1px solid rgba(120, 90, 90, 0.194);
+  border-radius: 5px;
+  padding: 0px 10px;
+}
+
+.admin-categori-delete-btn {
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  width: 100px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.admin-categori-mid-right-top {
+  min-height: 800px;
+}
+
+.admin-categori-mid-right-bottom {
+  display: flex;
+  justify-content: flex-end;
+  margin: 30px 0px 50px 0px;
+}
+
+.admin-categori-item-nickName {
+  cursor: pointer;
+}

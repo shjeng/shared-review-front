@@ -1,0 +1,72 @@
+#sign-up-wrap {
+  width: 630px;
+  min-height: 900px;
+  margin: auto;
+}
+
+.sign-up-title {
+  height: 130px;
+  text-align: center;
+  line-height: 200px;
+  font-size: 32px;
+  margin-bottom: 50px;
+}
+
+.join-Certified-Input-Box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.email-certification-btn,
+.nickname-certification-btn {
+  margin: 50px 0px 0px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #76767656;
+  border-radius: 8px;
+  width: 100px;
+  height: 50px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.email-certification-btn-off {
+  margin: 50px 0px 0px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #76767656;
+  border-radius: 8px;
+  width: 100px;
+  height: 50px;
+  font-size: 14px;
+  background-color: #a0a0a056;
+  user-select: none;
+}
+
+.join_input_box > .inputbox {
+  margin-left: 24px;
+}
+
+.auth-join-bottom {
+  display: flex;
+  justify-content: center;
+}
+
+.black-large-full-button,
+.auth-cancel-button {
+  margin: 40px 30px;
+  border-radius: 8px;
+  border: 1px solid #76767656;
+  border-style: solid;
+  width: 120px;
+  height: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}

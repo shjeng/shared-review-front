@@ -1,0 +1,49 @@
+#pagination-wrapper {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.asdasd {
+  margin: auto;
+}
+
+.pagination-change-link-box {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  cursor: pointer;
+}
+.pagination-change-link-text {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 140%;
+}
+.pagination-divider {
+  color: rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 140%;
+  cursor: default;
+}
+.pagination-text-active {
+  color: rgba(0, 0, 0, 1);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 140%;
+  cursor: default;
+}
+.pagination-text {
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 140%;
+  cursor: pointer;
+}
+.pagination-text:hover {
+  color: rgba(0, 0, 0, 0.8);
+}

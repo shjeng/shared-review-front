@@ -1,0 +1,24 @@
+#board-list-wrap {
+  width: 800px;
+  min-height: 900px;
+  margin: auto auto 100px auto;
+}
+
+.list-write-btn {
+  background-color: #5136ffca;
+  border: 1px solid #76767600;
+  border-radius: 5px;
+  width: 120px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+}
+
+.board-list-mid {
+  width: 100%;
+  /*min-height: 770px;*/
+  margin: auto;
+}

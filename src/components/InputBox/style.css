@@ -1,0 +1,55 @@
+.inputbox {
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  margin: auto;
+}
+
+.inputbox-label {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 16px;
+  line-height: 140%;
+  margin-top: 30px;
+  font-weight: 700;
+}
+
+.inputbox-container input,
+.inputbox-container-readonly input {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.143);
+  width: 450px;
+  height: 50px;
+}
+
+.inputbox-container input:focus {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.424);
+  box-shadow: none; /* 그림자 제거 */
+}
+
+.inputbox-container-error {
+  border-bottom: 1px solid rgba(255, 0, 0, 0.7);
+  padding: 16px 16px 16px 0px;
+
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  border: none;
+  background: none;
+  outline: none;
+
+  flex: 1;
+
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 140%;
+}
+
+.inputbox-message {
+  color: rgba(255, 0, 0, 0.7);
+
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 140%;
+}

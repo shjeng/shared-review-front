@@ -1,0 +1,126 @@
+#board-item-wrap {
+  background-color: #d9d9d982;
+  width: 380px;
+  height: 520px;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin: 0px 30px;
+  cursor: pointer;
+}
+
+.board-item-middle-box {
+  height: 350px;
+  background-image: url(../../assets/image/default-img2.png);
+  /* background-image: url(https://fastly.picsum.photos/id/866/500/300.jpg?hmac=gTBX2xIXKy_WSASp2ITBfmK7WFeBZyiuIumiEUmowcw); */
+
+  background-position: center;
+  background-size: cover;
+  border-radius: 10px;
+
+  background-repeat: no-repeat;
+
+  /* 비율 유지 */
+  /* background-size: contain;  */
+}
+
+.board-item-title {
+  width: 100%;
+  font-size: 24px;
+  margin-top: 15px;
+  white-space: nowrap; /* 텍스트를 한 줄로 표시, 줄바꿈 없음 */
+  overflow: hidden; /* 넘치는 텍스트 숨김 */
+  text-overflow: ellipsis; /* 넘치는 텍스트는 "..."으로 대체 */
+}
+
+.board-item-top-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0px;
+}
+
+.board-item-profile,
+.board-item-counts {
+  display: flex;
+  align-items: center;
+}
+
+.comment-count-image {
+  width: 25px;
+  height: 25px;
+  background-image: url(../../assets/image/boarditem-count.png);
+  background-size: 100% 100%;
+  margin-right: 5px;
+}
+
+.like-count-image {
+  width: 25px;
+  height: 23px;
+  background-image: url(../../assets/image/boarditem-like.png);
+  background-size: 100% 100%;
+  margin-right: 5px;
+}
+
+.view-count-image {
+  width: 30px;
+  height: 20px;
+  background-image: url(../../assets/image/boarditem-view.png);
+  background-size: 100% 100%;
+  margin-right: 5px;
+}
+
+.board-item-profile-image-default {
+  width: 40px;
+  height: 40px;
+  background-image: url(../../assets/image/default-profile.png);
+  background-size: cover;
+  margin-right: 10px;
+}
+
+.board-item-profile-image {
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.board-item-write-box {
+  font-size: 20px;
+}
+
+.comment-count-box,
+.like-count-box,
+.view-count-box {
+  display: flex;
+  align-items: center; /* 세로 정렬 중앙으로 */
+  font-size: 16px;
+}
+
+.board-item-write-date {
+  font-size: 14px;
+}
+
+.board-item-category {
+  color: #666666;
+  font-size: 18px;
+}
+
+.board-item-counts-left {
+  display: flex;
+}
+.board-item-counts-left > div {
+  margin-right: 10px;
+}
+
+.board-item-counts {
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.board-item-bottom-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100px;
+}

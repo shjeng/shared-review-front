@@ -1,0 +1,112 @@
+.recent-board-item-box:hover {
+  background-color: #e5e5e5;
+}
+
+.recent-board-item-top {
+  display: flex;
+  padding: 18px 0px 12px 0px;
+}
+
+.recent-board-item-bottom {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0px 10px 0px;
+}
+
+.recent-board-item-bottom > div {
+  color: rgb(96, 95, 95);
+}
+
+.recent-board-item-comment {
+  font-weight: bold;
+  color: green;
+  margin-left: 10px;
+}
+
+.recent-board-item-title {
+  font-size: 24px;
+  font-weight: bold;
+
+  white-space: nowrap; /* 텍스트를 한 줄로 표시, 줄바꿈 없음 */
+  overflow: hidden; /* 넘치는 텍스트 숨김 */
+  text-overflow: ellipsis; /* 넘치는 텍스트는 "..."으로 대체 */
+  width: 1330px;
+}
+
+.recent-board-item-list {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+}
+
+.board-item-metaData-left,
+.board-item-metaData-right {
+  display: flex;
+}
+
+.board-item-profile-image,
+.board-item-profile-image-default {
+  width: 30px;
+  height: 30px;
+  background-size: 100%;
+  margin: 0 10px 0px 0px;
+}
+
+.recent-board-item-timeInfo {
+  margin-left: 10px;
+}
+
+.list-write-btn-icon {
+  margin: 5px 5px 5px 0px;
+  width: 25px;
+  height: 25px;
+  background-image: url(../../assets/image/write-btn-icon.png);
+  background-position: center;
+  background-size: cover;
+}
+
+.list-write-title {
+  font-size: 25px;
+  margin: 40px 0px;
+}
+
+.board-comment-box,
+.board-like-box,
+.board-view-box {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.board-comment-img {
+  width: 25px;
+  height: 25px;
+  background-image: url(../../assets/image/boarditem-count.png);
+  background-size: 100% 100%;
+  margin-right: 5px;
+  background-repeat: no-repeat;
+}
+
+.board-like-img {
+  width: 25px;
+  height: 23px;
+  background-image: url(../../assets/image/boarditem-like.png);
+  background-size: 100% 100%;
+  margin-right: 5px;
+  background-repeat: no-repeat;
+}
+
+.board-view-img {
+  width: 40px;
+  height: 20px;
+  background-image: url(../../assets/image/boarditem-view.png);
+  background-size: 95% 100%;
+  margin-right: 5px;
+  background-repeat: no-repeat;
+}
+
+.board-list-bottom {
+  display: flex;
+  justify-content: flex-end;
+}

@@ -1,0 +1,171 @@
+#sign-in-wrap {
+  width: 630px;
+  min-height: 900px;
+  margin: auto;
+
+  user-select: none; /*드래그 막기*/
+}
+
+.sign-in-access-options {
+  width: 350px;
+  margin: 30px auto;
+}
+
+.sign-in-access-options ul {
+  list-style: none;
+  justify-content: space-between;
+  display: flex;
+  padding: 0;
+}
+
+.auth-sign-in-top,
+.auth-sign-in-bottom {
+  margin: auto;
+}
+
+.sign-in-title {
+  height: 130px;
+  text-align: center;
+  line-height: 200px;
+  font-size: 32px;
+  margin-bottom: 50px;
+}
+
+.sign-in-input-box input {
+  display: block;
+  margin: 30px auto;
+  width: 400px;
+  height: 50px;
+  border-style: none;
+  border-bottom: 1px solid rgb(201, 201, 201);
+  font-size: 16px;
+}
+
+.sign-in-input-box input:focus {
+  border-style: none;
+  outline: none;
+  border-bottom: 1px solid rgba(74, 74, 74, 0.757);
+}
+
+.sign-in-login-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  height: 50px;
+  margin: auto;
+  border: 1px solid rgb(201, 201, 201);
+  border-radius: 7px;
+}
+
+.social_login_box {
+  margin: auto;
+  width: 450px;
+}
+
+.social_login_image-box-g,
+.social_login_image-box-k,
+.social_login_image-box-n {
+  border-radius: 7px;
+  width: 450px;
+  height: 50px;
+  display: flex;
+  margin-top: 12px;
+}
+.social_login_image-box-g {
+  background-color: #eff1f2;
+}
+
+.social_login_image-box-k {
+  background-color: #fddc3f;
+}
+
+.social_login_image-box-n {
+  background-color: #03c75a;
+}
+
+.social_login_image-g {
+  margin: 10px 15px 10px 10px;
+  width: 30px;
+  height: 30px;
+  background-image: url(../../../assets/image/google-logo.png);
+  background-position: center;
+  background-size: cover;
+}
+
+.social_login_image-k {
+  margin: 5px 5px 5px 5px;
+  width: 40px;
+  height: 40px;
+  background-image: url(../../../assets/image/kakao-logo.png);
+  background-position: center;
+  background-size: cover;
+}
+
+.social_login_image-n {
+  margin: 5px 5px 5px 5px;
+  width: 40px;
+  height: 40px;
+  background-image: url(../../../assets/image/naver-logo.png);
+  background-position: center;
+  background-size: cover;
+}
+
+.social_login_title {
+  margin: auto 0px auto 130px;
+  color: #000000ab;
+  font-weight: 600;
+}
+
+hr {
+  width: 500px;
+  background: rgb(195, 195, 195);
+  height: 1px;
+  border: 0;
+  margin: 30px auto;
+}
+
+.auth-card-bottom {
+  width: 450px;
+  margin: 30px auto;
+}
+
+.login_button_off {
+  width: 450px;
+  height: 55px;
+  border: 1px solid #7676763c;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0c0c0cbe;
+}
+
+.login_button_on {
+  width: 450px;
+  height: 55px;
+  border: 1px solid #76767600;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  color: #e6e6e6;
+
+  background-color: #5136ffca;
+}
+
+.auth-description-link,
+.social_login_box > div {
+  cursor: pointer;
+}
+
+.auth-sign-in-error-box {
+  white-space: "pre-line";
+  margin-bottom: 20px;
+}
+
+.auth-sign-in-error-message {
+  color: red;
+}

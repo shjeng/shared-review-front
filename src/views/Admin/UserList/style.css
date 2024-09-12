@@ -1,0 +1,175 @@
+.userList-mid-left > div {
+  width: 100px;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.682);
+}
+
+.userList-mid-left {
+  margin-left: 90px;
+}
+#userList-wrap {
+  width: 1500px;
+  min-height: 900px;
+  margin: auto;
+}
+
+.userList-top {
+  width: 630px;
+  margin: 40px 360px 30px 410px;
+
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.userList-title {
+  font-size: 25px;
+}
+
+.userList-mid {
+  display: flex;
+  min-height: 800px;
+}
+.userList-classification,
+.userList-Item {
+  display: flex;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.098);
+}
+
+.userList-item-check-box,
+.checkBox {
+  width: 50px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.userList-item-check-box input,
+.checkBox input {
+  zoom: 1.4;
+}
+
+.classification-id,
+.userList-item-id {
+  display: flex;
+  align-items: center;
+  width: 40px;
+  height: 56px;
+  padding: 0px 10px;
+  justify-content: center;
+}
+
+.classification-nickName,
+.userList-item-nickName {
+  display: flex;
+  align-items: center;
+  width: 140px;
+  height: 56px;
+  justify-content: center;
+}
+
+.classification-email,
+.userList-item-email {
+  display: flex;
+  align-items: center;
+  width: 190px;
+  height: 56px;
+  padding: 0px 10px;
+  justify-content: center;
+}
+
+.classification-writerDate,
+.userList-item-writerDate {
+  display: flex;
+  align-items: center;
+  width: 100px;
+  height: 56px;
+  padding: 0px 10px;
+  justify-content: center;
+}
+
+.classification-authority,
+.userList-item-authority {
+  display: flex;
+  align-items: center;
+  width: 60px;
+  height: 56px;
+  padding: 0px 10px;
+  justify-content: center;
+}
+
+.classification-actions,
+.userList-item-action {
+  display: flex;
+  align-items: center;
+  width: 50px;
+  height: 56px;
+  padding: 0px 10px;
+  justify-content: center;
+}
+
+.actions-icon-img {
+  width: 20px;
+  height: 30px;
+  /* padding: 20px; */
+  background-image: url(../../../assets/image/delete-icon.png);
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+/*  */
+.userList-mid {
+  display: flex;
+}
+
+.admin-menu-userList-bold,
+.admin-menu-announcement,
+.admin-menu-post,
+.admin-menu-category {
+  margin-top: 15px;
+  font-size: 20px;
+}
+
+.userList-mid-right {
+  margin-left: 220px;
+}
+
+.userList-mid-right-bottom {
+  display: flex;
+  justify-content: flex-end;
+  margin: 30px 0px 50px 0px;
+}
+
+.admin-menu-userList-bold {
+  font-weight: 600;
+}
+
+.userList-classification {
+  background-color: rgba(0, 0, 0, 0.037);
+  border: none;
+}
+
+/* 검색 input */
+
+.userList-bottom-top {
+  display: flex;
+  width: 650px;
+  margin: auto;
+}
+
+.userList-delete-btn {
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  width: 100px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.userList-mid-right-top {
+  min-height: 800px;
+  width: 735px;
+}

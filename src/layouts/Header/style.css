@@ -1,0 +1,288 @@
+#header-wrap {
+  background-color: #fbfbfb;
+  width: 100%;
+  height: 140px;
+}
+
+.header-icon {
+  background-image: url(../../assets/image/main-logo.png);
+  background-size: cover;
+
+  width: 50px;
+  height: 50px;
+}
+
+.header-logo {
+  font-size: 16px;
+  margin-left: 10px;
+  font-weight: 600;
+  color: #4b4b4b;
+}
+
+.header-search {
+  position: relative;
+  width: 500px;
+  height: 35px;
+}
+
+.header-search input {
+  width: 100%;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+.header-search-img {
+  background-image: url(../../assets/image/search-icon.png);
+  background-size: cover;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 8px;
+  right: -15px;
+  margin: 0;
+}
+
+.header-top-box {
+  display: flex;
+  align-items: center;
+  height: 120px;
+  margin: auto;
+  max-width: 1440px;
+}
+
+.header-left-box,
+.header-middle-box {
+  display: flex;
+  align-items: center;
+}
+
+.header-middle-box {
+  width: 610px;
+  margin-left: 8%;
+}
+
+.header-category-box {
+  display: flex;
+  font-weight: 600;
+}
+
+.heder-bottom-item {
+  margin: 0px 10px;
+}
+
+.header-right-box {
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  justify-content: right;
+
+  position: relative; /* 기준점을 설정 */
+}
+
+.header-right-box-login,
+.header-right-box-signUp {
+  font-size: 13px;
+  width: 90px;
+  height: 45px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  cursor: pointer;
+}
+
+.header-login-button-login-icon {
+  width: 20px;
+  height: 20px;
+  background-image: url(../../assets/image/login-btn.png);
+  background-size: 100%;
+  background-position: center;
+}
+
+.header-login-button-signUp-icon {
+  width: 20px;
+  height: 20px;
+  background-image: url(../../assets/image/sign-up-icon.png);
+  background-size: 100%;
+  background-position: center;
+}
+
+.header-login-button {
+  margin-left: 5px;
+  font-size: 14px;
+  line-height: 1vh;
+  font-weight: 700;
+}
+
+/* 카테고리 드롭박스  */
+.dropdown-content {
+  position: absolute;
+  background-color: #f9f9f9;
+  border: 1px solid rgba(0, 0, 0, 0.134);
+  border-radius: 5px;
+  min-width: 160px;
+  z-index: 1;
+  max-height: 200px; /* 적절한 최대 높이 설정 */
+  overflow-y: auto; /* 내용이 넘칠 경우 스크롤 표시 */
+}
+
+.dropdown-content-item:hover {
+  background-color: #bbbbbb35;
+}
+
+.dropdown-box {
+  display: flex;
+  margin-right: 20px;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-dropdown-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.dropdown_icon {
+  width: 20px;
+  height: 20px;
+  background-image: url(../../assets/image/dropdown-icon.png);
+  background-size: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.header-category-dropdown {
+  height: 35px;
+  width: 113px;
+}
+
+.header-left-box,
+.header-search-img,
+.header-category-box > div,
+.dropdown-box {
+  cursor: pointer;
+}
+
+.header-right-box-img-default {
+  width: 50px;
+  height: 50px;
+  background-image: url(../../assets/image/default-profile.png);
+  background-size: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.header-right-box-img {
+  width: 35px;
+  height: 35px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.header-right-box-drop {
+  width: 20px;
+  height: 20px;
+  background-image: url(../../assets/image/dropdown-icon.png);
+  background-size: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-right: 10px;
+}
+
+.category-drop-icon {
+  width: 20px;
+  height: 20px;
+  background-image: url(../../assets/image/dropdown-icon.png);
+  background-size: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-right: 10px;
+}
+
+.profile-dropdown-content {
+  background-color: #f9f9f9;
+  border: 1px solid rgba(0, 0, 0, 0.134);
+  border-radius: 5px;
+  z-index: 1;
+  max-height: 200px;
+
+  position: absolute; /* 상대적으로 위치 설정 */
+  top: 100%; /* div2 바로 아래에 위치 */
+  left: 0; /* 왼쪽 정렬 */
+  min-width: 160px; /* 최소 너비 설정 */
+}
+
+.profile-dropdown-content-item {
+  line-height: 3.2em;
+  padding-left: 16px;
+  cursor: pointer;
+  color: rgba(34, 34, 34, 0.8);
+  font-weight: 500;
+}
+
+.profile-dropdown-content-item:hover {
+  background-color: #bbbbbb35;
+}
+
+.category-dropdown-content {
+  position: absolute;
+  background-color: #f9f9f9;
+  border: 1px solid rgba(0, 0, 0, 0.134);
+  border-radius: 5px;
+  min-width: 160px;
+  z-index: 1;
+  max-height: 200px;
+  overflow-y: auto;
+  margin-top: 5px;
+}
+
+.category-dropdown-item {
+  padding: 12px 48px 12px 16px;
+  cursor: pointer;
+  color: rgba(34, 34, 34, 0.8);
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+}
+
+.category-dropdown-item:hover {
+  background-color: #bbbbbb35;
+}
+
+.header-logo-right,
+.header-menu-box,
+.header-right-box {
+  user-select: none; /* 텍스트 선택 비활성화 */
+  -webkit-user-select: none; /* Safari 및 Chrome 같은 WebKit 기반 브라우저에서 텍스트 선택 비활성화 */
+  -moz-user-select: none; /* Firefox에서 텍스트 선택 비활성화 */
+  -ms-user-select: none; /* Internet Explorer에서 텍스트 선택 비활성화 */
+}
+
+.header-menu-box {
+  margin-left: 60px;
+}
+
+.header-menu-navigation {
+  display: flex;
+  cursor: pointer;
+}
+
+.header-right-box-nickName {
+  font-size: 16px;
+}
