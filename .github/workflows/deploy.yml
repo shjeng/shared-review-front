@@ -21,7 +21,7 @@ jobs:
 
       - name: S3 기존 파일들 전체 삭제 후 새로 업로드
         run: |
-          aws s3 rm --recursvie s3://shared-review-front-bucket
+          aws s3 rm --recursive s3://shared-review-front-bucket
           aws s3 cp ./ s3://shared-review-front-bucket --recursive
 
       - name: CloudFront Cache 무효화
