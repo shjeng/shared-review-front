@@ -2,8 +2,8 @@ import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import "./style.css";
 import { useNavigate, useParams } from "react-router-dom";
 import {
+  deleteUserRequest,
   editUser,
-  emailCheckRequest,
   getLoginUser,
   getMyInfo,
   nicknameDuplChkRequest,
@@ -22,6 +22,7 @@ import { useCookies } from "react-cookie";
 import { FileResponseDto } from "../../apis/response/file";
 import { SignUpRequestDto } from "../../apis/request/auth";
 import { useLoginUserStore } from "../../store";
+import { MAIN_PATH } from "../../constant";
 
 const UserPage = () => {
   const [authSuccess, setAuthSuccess] = useState<boolean>(false);
@@ -61,8 +62,9 @@ const UserPage = () => {
     setOriginNickname(result.userDto.nickname);
     setProfileImage(result.userDto.profileImage);
   };
+  const [cookies, setCookies, removeCookie] = useCookies();
+
   const EditPage = () => {
-    const [cookies, setCookies] = useCookies();
     const { setLoginUser } = useLoginUserStore();
 
     const navigate = useNavigate();
@@ -674,6 +676,7 @@ const UserPage = () => {
 
   const DeleteUser = () => {
     const [cookies, setCookies] = useCookies();
+    const navigate = useNavigate();
 
     const modafiyPasswordRef = useRef<HTMLInputElement | null>(null);
     const [modifyPassword, setModifyPassword] = useState<string>("");
@@ -753,32 +756,25 @@ const UserPage = () => {
         error = true;
       }
 
-      // 이메일이 입력된 경우. 입력한 이메일이 현재 토큰 내용과 일치한지 api
-      if (deleteUserEmail.length > 0) {
-        const response = await emailCheckRequest(
-          cookies.accessToken,
-          deleteUserEmail
-        );
-
-        alert("서버에서 받아온 값 : " + response);
-        return;
-
-        if (response?.code === "NU") {
-          setDeleteUserEmailError(true);
-          setDeleteUserEmailErrorMessage("이메일이 일치하지 않습니다.");
-          error = true;
-        }
-      }
-
       if (error) {
         return;
       }
 
       // 에러가 없는 경우 회원탈퇴 api 실행
       if (!error) {
-        updatePassword(cookies.accessToken, password, modifyPassword).then(
-          updatePasswordResponse
-        );
+        // 회원탈퇴 api가 들어갈 부분
+        if (window.confirm("정말 탈퇴하시겠습니까?")) {
+          const response = await deleteUserRequest(
+            cookies.accessToken,
+            deleteUserEmail
+          );
+          alert(response?.message);
+
+          removeCookie("accessToken", { path: "/" });
+          removeCookie("refreshToken", { path: "/" });
+          // 탈퇴 완료 페이지로 이동하는거 추가. 일단 메인으로 가는거로 작성
+          navigate(MAIN_PATH());
+        }
       }
     };
 

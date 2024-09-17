@@ -23,8 +23,8 @@ import { FileResponseDto } from "./response/file";
 import { Board } from "../types/interface";
 import Pageable from "../types/interface/pageable.interface";
 
-// const DOMAIN = "http://54.180.152.3:8080";
-const DOMAIN = "http://localhost:8080";
+const DOMAIN = "http://54.180.152.3:8080";
+// const DOMAIN = "http://localhost:8080";
 // const DOMAIN = "http://127.0.0.1:8080";
 const API_DOMAIN = `${DOMAIN}/api`;
 export const BACK_DOMAIN = () => DOMAIN;
@@ -763,9 +763,9 @@ export const updateNickname = async (
     });
 };
 
-// 이메일이 있는지 확인
-const EMAIL_CHECK_URL = () => `${API_DOMAIN}/user/email-check`;
-export const emailCheckRequest = async (
+// 회원탈퇴
+const EMAIL_CHECK_URL = () => `${API_DOMAIN}/user/delete-user`;
+export const deleteUserRequest = async (
   accessToken: string,
   deleteUserEmail: string
 ) => {
@@ -776,10 +776,6 @@ export const emailCheckRequest = async (
       { ...tokenAndPageConfig.token(accessToken) }
     )
     .then((response) => {
-      // console.log(
-      //   "서버에서 받아온 response값 : ",
-      //   JSON.stringify(response, null, 2)
-      // );
       return response.data as ResponseDto;
     })
     .catch((error) => {
