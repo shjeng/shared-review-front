@@ -18,7 +18,7 @@ jobs:
           node-version: '20'
 
       - name: 의존성 설치
-        run: npm install @toast-ui/react-editor --legacy-peer-deps
+        run: npm install @toast-ui/react-editor --force
 
       - name: Browserslist 업데이트
         run: npx update-browserslist-db@latest
