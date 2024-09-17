@@ -18,7 +18,7 @@ jobs:
           node-version: '20'
 
       - name: 의존성 설치
-        run: npm install --save --legacy-peer-deps
+        run: npm install @toast-ui/react-editor --legacy-peer-deps
 
       - name: 리액트 앱 빌드
         run: npm run build
