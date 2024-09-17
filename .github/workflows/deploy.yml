@@ -21,7 +21,7 @@ jobs:
       - name: 의존성 설치
         run: |
           npm install
-          npm install @toast-ui/react-editor --force
+          npm install @babel/plugin-proposal-private-property-in-object --save-dev
 
       - name: 리액트 앱 빌드
         run: npm run build
