@@ -16,9 +16,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20'
+          cache: 'npm'
 
       - name: 의존성 설치
-        run: npm install @toast-ui/react-editor --force
+        run: |
+          npm install
+          npm install @toast-ui/react-editor --force
 
       - name: 리액트 앱 빌드
         run: npm run build
