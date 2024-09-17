@@ -23,6 +23,9 @@ jobs:
       - name: 리액트 앱 빌드
         run: npm run build
 
+      - name: Browserslist 업데이트
+        run: npx update-browserslist-db@latest
+
       - name: AWS Resource에 접근할 수 있게 AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
