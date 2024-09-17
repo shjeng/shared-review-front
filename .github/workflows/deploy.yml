@@ -18,10 +18,10 @@ jobs:
           node-version: '20'
 
       - name: 의존성 설치
-        run: npm install
+        run: npm install --legacy-peer-deps
 
       - name: 리액트 앱 빌드
-        run: npm install
+        run: npm run build
 
       - name: AWS Resource에 접근할 수 있게 AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
