@@ -21,6 +21,9 @@ jobs:
       - name: 의존성 설치
         run: npm install --legacy-peer-deps
 
+      - name: npx browserslis
+        run: npx browserslist@latest --update-db
+
       - name: 리액트 앱 빌드
         run: npm run build
 
