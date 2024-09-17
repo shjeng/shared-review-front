@@ -12,6 +12,17 @@ jobs:
       - name: Github Repository 파일 불러오기
         uses: actions/checkout@v4
 
+      - name: Node.js 설치
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: 의존성 설치
+        run: npm install
+
+      - name: 리액트 앱 빌드
+        run: npm install
+
       - name: AWS Resource에 접근할 수 있게 AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -22,7 +33,7 @@ jobs:
       - name: S3 기존 파일들 전체 삭제 후 새로 업로드
         run: |
           aws s3 rm --recursive s3://shared-review-front-bucket
-          aws s3 cp ./ s3://shared-review-front-bucket --recursive
+          aws s3 cp ./build s3://shared-review-front-bucket --recursive
 
       - name: CloudFront Cache 무효화
         run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
