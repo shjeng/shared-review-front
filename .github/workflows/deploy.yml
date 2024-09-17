@@ -19,9 +19,7 @@ jobs:
           cache: 'npm'
 
       - name: 의존성 설치
-        run: |
-          npm install
-          npm install @babel/plugin-proposal-private-property-in-object --save-dev
+        run: npm install --force
 
       - name: 리액트 앱 빌드
         run: npm run build
