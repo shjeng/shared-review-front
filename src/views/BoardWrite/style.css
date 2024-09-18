@@ -134,8 +134,7 @@
 }
 
 .board-bottom-tag {
-  margin-top: 30px;
-  border-top: 1px solid rgba(0, 0, 0, 0.137);
+  margin-top: 50px;
   min-height: 140px;
 }
 
@@ -164,4 +163,10 @@
   background-color: #bbbbbb46;
   border-radius: 5px;
   padding: 4px 8px;
+}
+
+.editor_box{
+    width: 100%;
+  height: 500px;
+    border-radius: 5px;
 }

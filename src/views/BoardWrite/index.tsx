@@ -1,4 +1,3 @@
-import "@toast-ui/editor/dist/toastui-editor.css";
 import "./style.css";
 import React, {
   ChangeEvent,
@@ -7,7 +6,6 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { Editor } from "@toast-ui/react-editor";
 import { BACK_DOMAIN, getCategorysReqeust, postBoard } from "../../apis";
 import {
   GetCategorysResponseDto,
@@ -21,14 +19,17 @@ import { useNavigate } from "react-router-dom";
 import { BOARD_DETAIL, MAIN_PATH } from "../../constant";
 import loginUserStore from "../../store/login-user.store";
 import axios from "axios";
+import Editor from "../../components/Editor";
+import ReactQuill from "react-quill";
 
 const BoardWrite = () => {
-  const [cookies, seetCookies] = useCookies();
+  const [cookies, setCookies] = useCookies();
   const navigator = useNavigate();
   const titleRef = useRef<HTMLInputElement | null>(null);
   const dropdownRef = useRef<HTMLInputElement | null>(null);
 
   const tagRef = useRef<HTMLInputElement | null>(null);
+  const editorRef = useRef<ReactQuill>(null);
   const { loginUser } = loginUserStore();
 
   const [title, setTitle] = useState<string>("");
@@ -42,7 +43,6 @@ const BoardWrite = () => {
 
   const [titleError, setTitleError] = useState<boolean>(false);
   const [contentError, setContentError] = useState<boolean>(false);
-  const editorRef = useRef<Editor>(null);
 
   // Effect: 처음 렌더링 시 카테고리를 가져와줌.
   useEffect(() => {
@@ -55,29 +55,6 @@ const BoardWrite = () => {
     getCategorysReqeust().then(getCategorysResponse);
   }, []);
 
-  useEffect(() => {
-    if (editorRef.current) {
-      editorRef.current.getInstance().removeHook("addImageBlobHook");
-
-      // 새 Image Import Hook 생성
-      editorRef.current
-        .getInstance()
-        .addHook("addImageBlobHook", (blob, callback) => {
-          (async () => {
-            const formData = new FormData();
-            formData.append("file", blob);
-            const data = await axios.post(
-              `${BACK_DOMAIN()}/file/save/temp/image`,
-              formData
-            );
-            console.log(data);
-            callback(data.data.savedName, "image");
-          })();
-
-          return false;
-        });
-    }
-  }, [editorRef]);
 
   const getCategorysResponse = (
     responseBody: GetCategorysResponseDto | ResponseDto | null
@@ -110,9 +87,6 @@ const BoardWrite = () => {
   };
   const onContentChange = () => {
     // 에디터 내용 content
-    setContentHtml(editorRef.current?.getInstance().getHTML());
-    setContentMarkdown(editorRef.current?.getInstance().getMarkdown());
-    setContentError(false);
   };
 
   // 작성 버튼 클릭
@@ -131,19 +105,16 @@ const BoardWrite = () => {
       return;
     }
 
-    const content2 = editorRef.current?.getInstance().getMarkdown();
     if (!title) {
       titleRef.current?.focus();
       setTitleError(true);
     }
     if (!contentHtml?.trim()) {
-      editorRef.current?.getInstance().focus();
       setContentError(true);
     }
     if (titleError || contentError) {
       return;
     }
-    const content = editorRef.current?.getInstance().getHTML();
     const reqeustBody: BoardWriteRequestDto = {
       title,
       contentHtml,
@@ -249,7 +220,7 @@ const BoardWrite = () => {
           <div className="board-registered" onClick={onSubmit}>
             {"등록"}
           </div>
-          {/* 
+          {/*
           <div className="board-registered" onClick={onTest}>
             {"테스트"}
           </div> */}
@@ -267,19 +238,11 @@ const BoardWrite = () => {
             />
           </div>
           <div className="editor_box">
-            <Editor
-              ref={editorRef}
-              initialValue=" "
-              previewStyle="vertical"
-              height="600px"
-              onChange={onContentChange}
-              initialEditType="wysiwyg"
-              useCommandShortcut={false}
-            />
+            <Editor editorRef={editorRef}/>
           </div>
           <div className="board-main">
-            <div className="board-detail"></div>
-            <div className="board-attach"></div>
+            {/*<div className="board-detail"></div>*/}
+            {/*<div className="board-attach"></div>*/}
           </div>
         </div>
       </div>
