@@ -238,7 +238,7 @@ const BoardWrite = () => {
             />
           </div>
           <div className="editor_box">
-            <Editor editorRef={editorRef}/>
+            <Editor editorRef={editorRef} setContentHtml={setContentHtml}/>
           </div>
           <div className="board-main">
             {/*<div className="board-detail"></div>*/}
