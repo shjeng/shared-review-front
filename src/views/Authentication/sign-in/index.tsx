@@ -3,7 +3,12 @@ import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import SignInResponseDto from "../../../apis/response/auth/sign-in.response.dto";
 import ResponseDto from "../../../apis/response/response.dto";
-import { MAIN_PATH, SIGN_IN_PATH, SIGN_UP_PATH } from "../../../constant";
+import {
+  FIND_PASSWORD_PATH,
+  MAIN_PATH,
+  SIGN_IN_PATH,
+  SIGN_UP_PATH,
+} from "../../../constant";
 import SignInRequestDto from "../../../apis/request/auth/sign-in-request.dto";
 import { signInRequest } from "../../../apis";
 import InputBox from "../../../components/InputBox";
@@ -114,6 +119,11 @@ const SignIn = () => {
     onSignInButtonClickHandler();
   };
 
+  //      event handler: 비밀번호 찾기 이동 핸들러       //
+  const onFindPasswordClickHandler = () => {
+    navigate(FIND_PASSWORD_PATH());
+  };
+
   return (
     <div id="sign-in-wrap">
       <div className="auth-sign-in-top">
@@ -174,7 +184,10 @@ const SignIn = () => {
               </div>
             </li>
             <li>
-              <div className="auth-description-link" onClick={test}>
+              <div
+                className="auth-description-link"
+                onClick={onFindPasswordClickHandler}
+              >
                 {"비밀번호 찾기"}
               </div>
             </li>

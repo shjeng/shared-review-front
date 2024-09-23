@@ -1,0 +1,74 @@
+.find-passwordModify-container {
+  margin: auto;
+  width: 450px;
+  padding: 100px;
+}
+
+.find-passwordModify-title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 500;
+}
+/* =========================== */
+.find-passwordModify-mid {
+  margin-top: 50px;
+}
+
+.find-passwordModify-mid-auth-container {
+  display: flex;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.143);
+}
+
+.find-passwordModify-mid-auth-container > div:nth-child(1) {
+  width: 369px;
+}
+
+.find-passwordModify-mid-auth-btn-on {
+  height: 40px;
+  width: 80px;
+  border: 1px solid rgb(182, 182, 182);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-top: 50px;
+}
+
+.find-passwordModify-mid-auth-btn-off {
+  height: 40px;
+  width: 80px;
+  border: 1px solid rgb(182, 182, 182);
+  background-color: #d9d9d9;
+  color: #949494;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.find-passwordModify-mid-auth-container .inputbox-container > input {
+  border-bottom: none;
+  width: 350px;
+  margin-right: 50px;
+  text-overflow: ellipsis;
+}
+
+/* =========================== */
+
+.find-passwordModify-bottom {
+  margin-top: 40px;
+}
+
+.find-passwordModify-bottom > div {
+  height: 50px;
+  border: 1px solid rgb(182, 182, 182);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #646464;
+  border-radius: 5px;
+  cursor: pointer;
+}
