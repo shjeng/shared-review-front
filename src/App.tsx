@@ -9,6 +9,7 @@ import {
   BOARD_LIST,
   BOARD_WRITE,
   CATEGORI_MANAGE_PATH,
+  FIND_PASSWORD_PATH,
   MAIN_PATH,
   SIGN_IN_PATH,
   SIGN_UP_PATH,
@@ -34,6 +35,7 @@ import AdminUserList from "./views/Admin/UserList";
 import UserBoard from "./views/UserBoard";
 import AdminCategories from "./views/Admin/Categories";
 import { ResponseUtil } from "./utils";
+import FindPassword from "./views/Authentication/find-password";
 
 function App() {
   const { setLoginUser, resetLoginUser } = useLoginUserStore();
@@ -76,6 +78,8 @@ function App() {
         <Route path={USER_MANAGE_PATH()} element={<AdminUserList />} />
         <Route path={CATEGORI_MANAGE_PATH()} element={<AdminCategories />} />
         <Route path={ADMIN_BOARD_LIST()} element={<AdminBoardList />} />
+
+        <Route path={FIND_PASSWORD_PATH()} element={<FindPassword />} />
 
         {/* <Route path={AUTH_PATH()} element={<Authentication />} /> */}
       </Route>

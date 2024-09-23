@@ -5,6 +5,7 @@ export const BOARD_LIST = () => "/board/list";
 export const BOARD_DETAIL = (boardId: BigInt | string) => `/board/${boardId}`;
 export const SIGN_IN_PATH = () => "/auth/sign-in";
 export const SIGN_UP_PATH = () => "/auth/sign-up";
+export const FIND_PASSWORD_PATH = () => "/auth/find-password";
 
 export const USER_PAGE_PATH = (userEmail: string) => `/user/${userEmail}`;
 export const USER_BOARD = (userEmail: string) => `/user/${userEmail}/board`;
