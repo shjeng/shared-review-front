@@ -2,7 +2,12 @@ import React, { ChangeEvent, useRef, useState } from "react";
 import "./style.css";
 import InputBox from "../../../components/InputBox";
 import { useNavigate } from "react-router-dom";
-import { sendEmailAuthNumber, sendEmailRequest } from "../../../apis";
+import {
+  nonTokenUpdatePassword,
+  sendEmailAuthNumber,
+  sendEmailRequest,
+} from "../../../apis";
+import ResponseDto from "../../../apis/response/response.dto";
 
 const FindPassword = () => {
   //        function: 네비게이트 함수     //
@@ -16,8 +21,6 @@ const FindPassword = () => {
   // event handler: 비밀번호 변경 요청      //
   const onFindPasswordBtnClickHandler = async () => {
     let error = false;
-
-    alert(emailReadonlyState);
 
     if (userEmail.length === 0) {
       setUserEmailError(true);
@@ -39,11 +42,6 @@ const FindPassword = () => {
       error = true;
     }
 
-    if (userEmailError && authNumberError) {
-      alert("인증부터 해주세요.");
-      error = true;
-    }
-
     if (modifyPassword.length === 0) {
       setModifyPasswordError(true);
       setModifyPasswordErrorMessage("변경할 비밀번호를 입력해주세요.");
@@ -57,6 +55,15 @@ const FindPassword = () => {
       );
       error = true;
     }
+
+    if (modifyPassword !== modifyPasswordCheck) {
+      setModifyPasswordError(true);
+      setModifyPasswordErrorMessage("");
+      setModifyPasswordCheckError(true);
+      setModifyPasswordCheckErrorMessage("비밀번호가 일치하지 않습니다.");
+      error = true;
+    }
+
     // ===============
 
     if (error) {
@@ -64,7 +71,25 @@ const FindPassword = () => {
     }
 
     if (!error) {
-      // 아이디 찾기 api
+      alert("비밀번호 일치. 비밀번호 변경 api 실행");
+      // 비밀번호 변경 api 실행
+      nonTokenUpdatePassword(userEmail, modifyPassword).then(
+        nonTokenUpdatePasswordResponse
+      );
+    }
+  };
+  const nonTokenUpdatePasswordResponse = (response: ResponseDto | null) => {
+    console.log(
+      "서버에서 받아온 response값 : ",
+      JSON.stringify(response, null, 2)
+    );
+    if (response?.code === "SU") {
+      alert(response?.message);
+      return;
+      // setCurrentPage("edit");
+    } else {
+      alert("오류");
+      return;
     }
   };
 
@@ -108,6 +133,8 @@ const FindPassword = () => {
     const success = await sendEmailRequest(clientEmail);
     if (success) {
       setEmailReadonlyState(true);
+      setUserEmailError(false);
+      setUserEmailErrorMessage("");
     }
   };
   // ================인증번호=================================
@@ -142,6 +169,8 @@ const FindPassword = () => {
     console.log("인증번호 인증 버튼 결과 : " + success);
     if (success) {
       setAuthNumReadonlyState(true);
+      setAuthNumberError(false);
+      setAuthNumberErrorMessage("");
     }
   };
 

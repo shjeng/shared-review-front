@@ -270,10 +270,10 @@ export const getBoardRequest = async (boardId: string | bigint) => {
     .get(GET_BOARD(boardId))
     .then((response) => {
       const responseBody: GetBoardDetailResponseDto = response.data;
-      console.log(
-        "서버에서 받아온 responseBody값 : ",
-        JSON.stringify(responseBody, null, 2)
-      );
+      // console.log(
+      //   "서버에서 받아온 responseBody값 : ",
+      //   JSON.stringify(responseBody, null, 2)
+      // );
       return responseBody;
     })
     .catch((error) => {
@@ -721,7 +721,7 @@ export const refreshAccessToken = async (refreshToken: string) => {
   return result;
 };
 
-// 비밀번호 변경
+// 토큰o 비밀번호 변경
 const UPDATE_PASSWORD_URL = () => `${API_DOMAIN}/user/update-password`;
 export const updatePassword = async (
   accessToken: string,
@@ -775,6 +775,25 @@ export const deleteUserRequest = async (
       { deleteUserEmail: deleteUserEmail },
       { ...tokenAndPageConfig.token(accessToken) }
     )
+    .then((response) => {
+      return response.data as ResponseDto;
+    })
+    .catch((error) => {
+      return errorResponse(error);
+    });
+};
+
+// 토큰x 비밀번호 변경
+const NT_UPDATE_PASSWORD_URL = () => `${API_DOMAIN}/user/nt-update-password`;
+export const nonTokenUpdatePassword = async (
+  userEmail: string,
+  modifyPassword: string
+) => {
+  return await axios
+    .post(NT_UPDATE_PASSWORD_URL(), {
+      userEmail: userEmail,
+      modifyPassword: modifyPassword,
+    })
     .then((response) => {
       return response.data as ResponseDto;
     })
