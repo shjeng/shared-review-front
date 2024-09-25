@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 import "./style.css";
 import InputBox from "../../../components/InputBox";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,7 @@ import {
   sendEmailRequest,
 } from "../../../apis";
 import ResponseDto from "../../../apis/response/response.dto";
+import { SIGN_IN_PATH } from "../../../constant";
 
 const FindPassword = () => {
   //        function: 네비게이트 함수     //
@@ -64,31 +65,22 @@ const FindPassword = () => {
       error = true;
     }
 
-    // ===============
-
     if (error) {
       return;
     }
 
     if (!error) {
-      alert("비밀번호 일치. 비밀번호 변경 api 실행");
-      // 비밀번호 변경 api 실행
       nonTokenUpdatePassword(userEmail, modifyPassword).then(
         nonTokenUpdatePasswordResponse
       );
     }
   };
   const nonTokenUpdatePasswordResponse = (response: ResponseDto | null) => {
-    console.log(
-      "서버에서 받아온 response값 : ",
-      JSON.stringify(response, null, 2)
-    );
     if (response?.code === "SU") {
       alert(response?.message);
-      return;
-      // setCurrentPage("edit");
+      navigate(SIGN_IN_PATH());
     } else {
-      alert("오류");
+      alert(response?.message);
       return;
     }
   };
@@ -193,6 +185,8 @@ const FindPassword = () => {
     setModifyPassword(value);
     setModifyPasswordError(false);
     setModifyPasswordErrorMessage("");
+    setModifyPasswordCheckError(false);
+    setModifyPasswordCheckErrorMessage("");
   };
 
   // ====================변경 비밀번호 확인
@@ -214,6 +208,8 @@ const FindPassword = () => {
     setModifyPasswordCheck(value);
     setModifyPasswordCheckError(false);
     setModifyPasswordCheckErrorMessage("");
+    setModifyPasswordError(false);
+    setModifyPasswordErrorMessage("");
   };
 
   return (
@@ -299,7 +295,7 @@ const FindPassword = () => {
           />
           <InputBox
             ref={modifyPasswordCheckRef}
-            label="변경할 비밀번호 확인"
+            label="새로운 비밀번호 확인"
             type={"password"}
             placeholder="확인을 위해 다시 입력해주세요."
             value={modifyPasswordCheck}
