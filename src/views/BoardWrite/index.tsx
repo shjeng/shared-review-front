@@ -31,7 +31,7 @@ const BoardWrite = () => {
   const tagRef = useRef<HTMLInputElement | null>(null);
   const editorRef = useRef<ReactQuill>(null);
   const { loginUser } = loginUserStore();
-
+  const editorIds = useRef<bigint[]>([]);
   const [title, setTitle] = useState<string>("");
   const [categoryDrop, setCategoryDrop] = useState(false);
   const [category, setCategory] = useState<Category | undefined>();
@@ -238,7 +238,7 @@ const BoardWrite = () => {
             />
           </div>
           <div className="editor_box">
-            <Editor editorRef={editorRef} setContentHtml={setContentHtml}/>
+            <Editor editorRef={editorRef} setContentHtml={setContentHtml} editorIds={editorIds}/>
           </div>
           <div className="board-main">
             {/*<div className="board-detail"></div>*/}

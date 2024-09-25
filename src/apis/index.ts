@@ -23,8 +23,8 @@ import { FileResponseDto } from "./response/file";
 import { Board } from "../types/interface";
 import Pageable from "../types/interface/pageable.interface";
 
-const DOMAIN = "http://54.180.152.3:8080";
-// const DOMAIN = "http://localhost:8080";
+// const DOMAIN = "http://54.180.152.3:8080";
+const DOMAIN = process.env.REACT_APP_API_DOMAIN;
 // const DOMAIN = "http://127.0.0.1:8080";
 const API_DOMAIN = `${DOMAIN}/api`;
 export const BACK_DOMAIN = () => DOMAIN;
@@ -137,25 +137,6 @@ export const nicknameDuplChkRequest = async (nickname: string) => {
   return result;
 };
 
-// 파일 저장
-const SAVE_IMAGE = () => `${DOMAIN}/file/save/temp/image`;
-export const saveTempImage = async (
-  accessToken: string,
-  file: FormData | null | undefined
-) => {
-  console.log("SAVE_IMAGE 실행");
-  alert("SAVE_IMAGE 실행");
-  return await axios
-    .post(SAVE_IMAGE(), file, {
-      ...tokenAndPageConfig.multipartAndToken(accessToken),
-    })
-    .then((response) => {
-      return response.data as FileResponseDto;
-    })
-    .catch((error) => {
-      return errorResponse(error);
-    });
-};
 // 비밀번호 확인
 const PASSWORD_CHECK_URL = () => `${API_DOMAIN}/user/password-check`;
 export const passwordCheckRequest = async (

@@ -26,8 +26,9 @@ const formats = [
 interface Props {
     editorRef: React.RefObject<ReactQuill>;
     setContentHtml: (content: string) => void;
+    editorIds: React.MutableRefObject<bigint[]>;
 }
-const Editor = ({editorRef, setContentHtml}: Props) => {
+const Editor = ({editorRef, setContentHtml, editorIds}: Props) => {
     const imageHandler = () => {
         console.log('에디터에서 이미지 버튼을 클릭하면 이 핸들러가 시작됩니다!');
 
@@ -50,12 +51,11 @@ const Editor = ({editorRef, setContentHtml}: Props) => {
             // 백엔드 multer라우터에 이미지를 보낸다.
             try {
                 if (!apiDomain) {
-                    console.error('API_DOMAIN이 없습니다.');
                     return;
                 }
                 const result = await axios.post(`${apiDomain}/file/save/image`, formData);
-                console.log('성공 시, 백엔드가 보내주는 데이터', result);
                 const IMG_URL = result.data.fileUrl;
+                editorIds.current.push(result.data.editorId);
                 // 이 URL을 img 태그의 src에 넣은 요소를 현재 에디터의 커서에 넣어주면 에디터 내에서 이미지가 나타난다
                 // src가 base64가 아닌 짧은 URL이기 때문에 데이터베이스에 에디터의 전체 글 내용을 저장할 수있게된다
                 // 이미지는 꼭 로컬 백엔드 uploads 폴더가 아닌 다른 곳에 저장해 URL로 사용하면된다.
@@ -76,7 +76,6 @@ const Editor = ({editorRef, setContentHtml}: Props) => {
                 editor.insertEmbed(range.index, 'image', IMG_URL);
             } catch (error) {
                 console.log(error);
-                console.log('실패했어요ㅠ');
             }
         });
     };
