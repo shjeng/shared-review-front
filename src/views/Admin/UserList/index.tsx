@@ -14,7 +14,6 @@ import SearchInputBox from "../../../components/SearchInputBox";
 
 const AdminUserList = () => {
   const [users, setUsers] = useState<UserList[]>([]);
-  const [selectAll, setSelectAll] = useState<boolean>();
 
   //        function: 네비게이트 함수     //
   const navigate = useNavigate();
@@ -52,25 +51,7 @@ const AdminUserList = () => {
     }
     const result = responseBody as GetUserListResponseDto;
     setUsers(result.userList);
-  };
-
-  // 전체 선택/해제 함수
-  const toggleSelectAll = () => {
-    setSelectAll(!selectAll);
-    const updatedUsers = users.map((user) => ({
-      ...user,
-      selected: !selectAll,
-    }));
-    setUsers(updatedUsers);
-  };
-
-  // 개별 체크박스 선택 함수
-  const toggleSelectUser = (index: number) => {
-    const updatedUsers = [...users];
-    updatedUsers[index].selected = !updatedUsers[index].selected;
-    setUsers(updatedUsers);
-    const allChecked = updatedUsers.every((user) => user.selected);
-    setSelectAll(allChecked);
+    console.log(users);
   };
 
   const userDefinedColumns = [
@@ -145,24 +126,13 @@ const AdminUserList = () => {
             />
 
             <div className="userList-classification">
-              <div className="userList-item-check-box">
-                <input
-                  type="checkbox"
-                  checked={selectAll}
-                  onChange={toggleSelectAll}
-                />
-              </div>
-              {/* <div className="classification-id">ID</div>
-              <div className="classification-nickName">닉네임</div>
-              <div className="classification-email">이메일</div>
-              <div className="classification-writerDate">가입일</div>
-              <div className="classification-authority">권한</div> */}
-
               {userDefinedColumns.map(({ label, field }) => (
                 <div key={field} className={`classification-${field}`}>
                   {label}
                 </div>
               ))}
+              <div className="classification-state">회원상태</div>
+              <div className="classification-withdrawal-time">탈퇴일</div>
 
               <div className="classification-actions">action</div>
             </div>
@@ -170,13 +140,6 @@ const AdminUserList = () => {
             <div className="userList-Item-box">
               {users.map((user, index) => (
                 <div key={index} className="userList-Item">
-                  <div className="checkBox">
-                    <input
-                      type="checkbox"
-                      checked={user.selected || false}
-                      onChange={() => toggleSelectUser(index)}
-                    />
-                  </div>
                   <div className="userList-item-id">{user.id}</div>
                   <div className="userList-item-nickName">{user.nickname}</div>
                   <div className="userList-item-email">{user.email}</div>
@@ -185,6 +148,17 @@ const AdminUserList = () => {
                     {/* 날짜형식 백에서 처리하기 */}
                   </div>
                   <div className="userList-item-authority">{user.admin}</div>
+                  <div className="userList-item-state">
+                    {user.active ? "유효" : "탈퇴"}
+                  </div>
+                  <div className="userList-item-withdrawal-time">
+                    {user.withdrawalTime
+                      ? new Date(user.withdrawalTime)
+                          .toISOString()
+                          .split("T")[0]
+                      : "-"}
+                  </div>
+
                   <div className="userList-item-action">
                     <div className="actions-icon-img"></div>
                   </div>

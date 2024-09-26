@@ -173,6 +173,7 @@
   justify-content: center;
 }
 .admin-categori-mid-right-top {
+  width: 735px;
   min-height: 800px;
 }
 
@@ -184,4 +185,8 @@
 
 .admin-categori-item-nickName {
   cursor: pointer;
+}
+
+.admin-categori-bottom-top {
+  width: 900px;
 }
