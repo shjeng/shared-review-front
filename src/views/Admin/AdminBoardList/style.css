@@ -73,7 +73,7 @@
 .admin-item-title {
   display: flex;
   align-items: center;
-  width: 300px;
+  width: 280px;
   height: 56px;
   padding: 0px 10px;
   justify-content: center;
@@ -181,4 +181,8 @@
 .admin-mid-right-top {
   min-height: 800px;
   width: 735px;
+}
+
+.admin-categori-bottom-top .admin-search {
+  width: 600px;
 }

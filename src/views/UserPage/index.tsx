@@ -678,22 +678,6 @@ const UserPage = () => {
     const [cookies, setCookies] = useCookies();
     const navigate = useNavigate();
 
-    const modafiyPasswordRef = useRef<HTMLInputElement | null>(null);
-    const [modifyPassword, setModifyPassword] = useState<string>("");
-    const [modifyPasswordError, setModifyPasswordError] =
-      useState<boolean>(false);
-    const [modifyPasswordErrorMessage, setModifyPasswordErrorMessage] =
-      useState<string>("");
-
-    const onModifyPasswordChangeHandler = (
-      event: ChangeEvent<HTMLInputElement>
-    ) => {
-      const { value } = event.target;
-      setModifyPassword(value);
-      setModifyPasswordError(false);
-      setModifyPasswordErrorMessage("");
-    };
-
     const passwordRef = useRef<HTMLInputElement | null>(null);
     const [password, setPassword] = useState<string>("");
     const [passwordError, setPasswordError] = useState<boolean>(false);
@@ -775,16 +759,6 @@ const UserPage = () => {
           // 탈퇴 완료 페이지로 이동하는거 추가. 일단 메인으로 가는거로 작성
           navigate(MAIN_PATH());
         }
-      }
-    };
-
-    const updatePasswordResponse = (response: ResponseDto | null) => {
-      if (response?.code === "SU") {
-        alert(response?.message);
-        setCurrentPage("edit");
-      } else {
-        alert("오류");
-        return;
       }
     };
 

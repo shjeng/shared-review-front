@@ -15,7 +15,7 @@
 
 .userList-top {
   width: 630px;
-  margin: 40px 360px 30px 410px;
+  margin: 40px 360px 30px 340px;
 
   height: 50px;
   display: flex;
@@ -36,18 +36,13 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.098);
 }
 
-.userList-item-check-box,
-.checkBox {
-  width: 50px;
+.classification-state,
+.userList-item-state {
+  width: 90px;
   height: 56px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.userList-item-check-box input,
-.checkBox input {
-  zoom: 1.4;
 }
 
 .classification-id,
@@ -80,7 +75,9 @@
 }
 
 .classification-writerDate,
-.userList-item-writerDate {
+.userList-item-writerDate,
+.classification-withdrawal-time,
+.userList-item-withdrawal-time {
   display: flex;
   align-items: center;
   width: 100px;
@@ -93,7 +90,7 @@
 .userList-item-authority {
   display: flex;
   align-items: center;
-  width: 60px;
+  width: 80px;
   height: 56px;
   padding: 0px 10px;
   justify-content: center;
@@ -133,7 +130,7 @@
 }
 
 .userList-mid-right {
-  margin-left: 220px;
+  margin-left: 150px;
 }
 
 .userList-mid-right-bottom {
@@ -171,5 +168,9 @@
 
 .userList-mid-right-top {
   min-height: 800px;
-  width: 735px;
+  width: 910px;
+}
+
+.userList-mid-right-top .admin-search {
+  width: 780px;
 }
