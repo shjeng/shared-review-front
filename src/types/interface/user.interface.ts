@@ -4,4 +4,5 @@ export default interface User {
   profileImage: string;
   name: string;
   admin: string;
+  active: boolean;
 }

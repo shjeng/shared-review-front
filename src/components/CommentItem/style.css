@@ -55,3 +55,9 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+
+.comment-item-wrap .board-detail-profile-img {
+  width: 30px;
+  height: 30px;
+  background-image: url(../../assets/image/default-profile.png);
+}

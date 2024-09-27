@@ -31,6 +31,10 @@ const CommentItem = ({ comment, reRenderComment }: Props) => {
   }, []);
 
   const userBoard = () => {
+    if (!comment.user.active) {
+      alert("탈퇴한 회원입니다.");
+      return;
+    }
     navigator(USER_BOARD(comment.user.email));
   };
   const deleteCommentClick = () => {
@@ -61,7 +65,7 @@ const CommentItem = ({ comment, reRenderComment }: Props) => {
     <div className="comment-item-wrap">
       <div className="comment-item-top">
         <div className="comment-user-box" onClick={userBoard}>
-          {comment.user.profileImage ? (
+          {comment.user.profileImage && comment.user.active ? (
             <div className="comment-profile-img-box pointer">
               <div
                 className="profile-img"
@@ -72,7 +76,7 @@ const CommentItem = ({ comment, reRenderComment }: Props) => {
             <div className="board-detail-profile-img pointer"></div>
           )}
           <div className="comment-item-nickname pointer">
-            {comment.user.nickname}
+            {comment.user.active ? comment.user.nickname : "탈퇴한 회원"}
           </div>
         </div>
         <div className="height-line-box">

@@ -44,11 +44,6 @@ const Main = () => {
     const resultBody = result as BoardListResponse;
     if (resultBody.condition === "week") {
       setFavoriteBoardTop3ForWeek(resultBody.boards);
-
-      // console.log(
-      //   "서버에서 받아온 resultBody.boards값 : ",
-      //   JSON.stringify(resultBody.boards, null, 2)
-      // );
     }
     if (resultBody.condition === "month") {
       setFavoriteBoardTop3Month(resultBody.boards);

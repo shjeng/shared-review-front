@@ -65,6 +65,15 @@ const BoardList = () => {
     setCurrentPage(result.pageable.pageNumber + 1);
     setTotalCount(result.totalElements);
     setCountPerItem(result.size);
+
+    result.content.forEach((board) => {
+      // console.log(
+      //   "board.category 값 : ",
+      //   JSON.stringify(board.category, null, 2)
+      // );
+      setCategory(board.category);
+    });
+
     // setBoards(result.boardPage.content);
   };
 
@@ -132,7 +141,7 @@ const BoardList = () => {
   return (
     <div id="board-list-wrap">
       <div className="board-list-top">
-        <div className="list-write-title">게시물</div>
+        <div className="list-write-title">{category?.categoryName}게시물</div>
       </div>
       <div className="board-list-mid">
         {/* {boards && (
