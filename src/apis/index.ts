@@ -120,7 +120,25 @@ export const getLoginUser = async (userEmail: string) => {
     });
   return result;
 };
-
+// 파일 저장
+const SAVE_IMAGE = () => `${DOMAIN}/file/save/temp/image`;
+export const saveTempImage = async (
+    accessToken: string,
+    file: FormData | null | undefined
+) => {
+    console.log("SAVE_IMAGE 실행");
+    alert("SAVE_IMAGE 실행");
+    return await axios
+        .post(SAVE_IMAGE(), file, {
+            ...tokenAndPageConfig.multipartAndToken(accessToken),
+        })
+        .then((response) => {
+            return response.data as FileResponseDto;
+        })
+        .catch((error) => {
+            return errorResponse(error);
+        });
+};
 // 닉네임 중복 확인
 const NICKNAME_DUPL_CHK = (nickname: string) =>
   `${API_DOMAIN}/auth/nickname-chk?nickname=${nickname}`;
