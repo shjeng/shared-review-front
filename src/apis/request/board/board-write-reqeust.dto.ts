@@ -6,4 +6,5 @@ export default interface BoardWriteRequestDto {
   contentMarkdown: string | undefined;
   category: Category | undefined;
   tags: string[];
+  editorImageIds: bigint[];
 }

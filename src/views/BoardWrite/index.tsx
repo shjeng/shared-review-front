@@ -100,7 +100,7 @@ const BoardWrite = () => {
     } else if (dropdownRef.current?.textContent === "카테고리") {
       alert("카테고리를 선택해주세요.");
       return;
-    } else if (!contentHtml?.replace(/<[^>]*>/g, "").trim()) {
+    } else if (!contentHtml || !contentHtml.trim()) {
       alert("내용을 입력해주세요.");
       return;
     }
@@ -120,6 +120,7 @@ const BoardWrite = () => {
       contentHtml,
       contentMarkdown,
       category,
+      editorImageIds: editorIds.current,
       tags,
     };
     postBoard(reqeustBody, cookies.accessToken).then(postResponse);
