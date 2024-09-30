@@ -319,10 +319,7 @@ const BoardDetail = () => {
         </div>
 
         <div className="board-detail-mid">
-          <div
-            className="board-detail"
-            dangerouslySetInnerHTML={renderContent()}
-          ></div>
+          <div className="board-detail" dangerouslySetInnerHTML={renderContent()}></div>
           <div className="border-detail-tag">
             {tags.map((tag) => (
               <div className="border-detail-tag-item" onClick={() => {}}>

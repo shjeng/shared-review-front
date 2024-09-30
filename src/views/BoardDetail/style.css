@@ -71,12 +71,26 @@
 .board-detail-mid {
   min-height: 500px;
   border-bottom: 1px solid #c7c7c7;
-
   padding: 25px;
   display: flex;
   flex-direction: column; /* 자식 요소들을 수직으로 배치 */
 }
-
+.board-detail {
+  width: 100%;
+  height: auto; /* 내용에 맞춰 높이 자동 조정 */
+  white-space: pre-wrap; /* 공백과 줄바꿈을 유지하며 줄바꿈 */
+  word-wrap: break-word; /* 긴 단어를 줄바꿈 */
+  display: flex;
+  flex-direction: column;
+}
+.board-detail img{
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+.board-detail {
+  width: 100%;
+}
 .board-detail-bottom {
   background-color: #fff;
   padding: 25px;
@@ -287,8 +301,3 @@
   border: 1px solid #ff0000;
 }
 
-.board-detail {
-  white-space: pre-wrap; /* 공백과 줄바꿈을 유지하며 줄바꿈 */
-  word-wrap: break-word; /* 긴 단어를 줄바꿈 */
-  height: 100px;
-}
