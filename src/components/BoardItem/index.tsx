@@ -8,6 +8,10 @@ interface Props {
   board: Board;
 }
 const BoardItem = ({ board }: Props) => {
+  useEffect(() => {
+    console.log("서버에서 받아온 board 값 : ", JSON.stringify(board, null, 2));
+  }, []);
+
   const navigator = useNavigate();
   const detailView = () => {
     navigator(BOARD_DETAIL(board.boardId));
@@ -25,7 +29,7 @@ const BoardItem = ({ board }: Props) => {
     <div id="board-item-wrap" onClick={detailView}>
       <div className="board-item-top-box">
         <div className="board-item-profile" onClick={userBoard}>
-          {board.user.profileImage ? (
+          {board.user.profileImage && board.user.active ? (
             <div
               className="board-item-profile-image"
               style={{ backgroundImage: `url(${board.user.profileImage})` }}
@@ -34,7 +38,9 @@ const BoardItem = ({ board }: Props) => {
             <div className="board-item-profile-image-default"></div>
           )}
           <div className="board-item-write-box">
-            <div className="board-item-nickname">{board.user.nickname}</div>
+            <div className="board-item-nickname">
+              {board.user.active ? board.user.nickname : "탈퇴한 회원"}
+            </div>
             <div className="board-item-write-date">
               {new Date(board.writeDateTime).toISOString().split("T")[0]}
             </div>
@@ -49,9 +55,7 @@ const BoardItem = ({ board }: Props) => {
         <div
           className="board-item-middle-box"
           style={{ backgroundImage: `url(${board.backImg.imageUrl})` }}
-        >
-          {/* 이미지 넣는건가 */}
-        </div>
+        ></div>
       ) : (
         <div className="board-item-middle-box">{/* 이미지 넣는건가 */}</div>
       )}

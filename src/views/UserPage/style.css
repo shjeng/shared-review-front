@@ -77,19 +77,22 @@
   font-size: 36px;
   display: flex;
   justify-content: center;
+  text-align: center;
+  margin-top: 10px;
 }
 .user-info-input-box {
   display: flex;
-  gap: 20px;
+  gap: 10px;
 }
 .input-box {
-  border: 1px solid black;
-  display: flex;
-  justify-content: center;
-  padding: 10px;
-  border-radius: 10px;
+  width: 230px;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  padding-left: 10px;
 }
 .password-input {
+  width: 95%;
+  height: 95%;
   outline: none;
   border: none;
 }
@@ -98,9 +101,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
-  padding: 10px;
-  border-radius: 10px;
+  border: 1px solid #bbb;
+  padding: 10px 20px;
+  border-radius: 6px;
 }
 
 .top-left-item1,
@@ -125,6 +128,7 @@
 .passwordModify-container,
 .delete-user-page2-centainer {
   margin: auto;
+  min-height: 600px;
   width: 450px;
   padding: 100px;
 }
@@ -316,6 +320,10 @@
   margin-left: 30px;
 }
 
+.delete-user-page1-bottem-item1 * {
+  cursor: pointer;
+}
+
 .delete-user-page1-bottem-item1 > div {
   font-size: 17px;
   font-weight: 600;
@@ -350,7 +358,6 @@
   background-color: #ffffff;
   border: 1px solid rgb(181, 181, 181);
   border-radius: 50%;
-  cursor: pointer;
   transition: background-color 0.3s;
 }
 
@@ -406,4 +413,21 @@
 }
 .delete-user-page1-bottem-item2-confirm {
   margin-left: 30px;
+}
+
+.user-info-top-image {
+  margin: auto;
+  background-image: url(../../assets/image/user-check-icon.png);
+  width: 170px;
+  height: 170px;
+
+  background-size: cover;
+}
+
+.user-info-bottom {
+  cursor: pointer;
+  color: rgb(0, 0, 0);
+  font-size: 17px;
+  font-weight: 600;
+  margin-top: 25px;
 }

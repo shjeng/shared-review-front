@@ -20,7 +20,7 @@ const BoardItem2 = ({ board }: Props) => {
       </div>
       <div className="recent-board-item-bottom">
         <div className="board-item-metaData-left">
-          {board.user.profileImage ? (
+          {board.user.profileImage && board.user.active ? (
             <div
               className="board-item-profile-image"
               style={{ backgroundImage: `url(${board.user.profileImage})` }}
@@ -30,7 +30,7 @@ const BoardItem2 = ({ board }: Props) => {
           )}
 
           <div className="recent-board-item-nickname">
-            {board.user.nickname}
+            {board.user.active ? board.user.nickname : "탈퇴한 유저"}
           </div>
           <div className="recent-board-item-category">
             {board.category.categoryName}

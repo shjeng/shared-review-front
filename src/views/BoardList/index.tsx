@@ -23,6 +23,9 @@ const BoardList = () => {
   const { setCategoryId, setSearchWord, setSearchType } = useBoardSearchStore();
   const navigator = useNavigate();
   const [requestParams, setRequestParams] = useState<Object>({});
+  const [localCategoryId, setLocalCategoryId] = useState<
+    string | bigint | null
+  >();
 
   const {
     startPage,
@@ -45,6 +48,11 @@ const BoardList = () => {
   const [boards, setBoards] = useState<Board[]>([]);
 
   useEffect(() => {
+    setLocalCategoryId(categoryId);
+    console.log(
+      "BoardList 49줄 categoryId 값 : ",
+      JSON.stringify(categoryId, null, 2)
+    );
     const params = {
       page: 0,
       categoryId: categoryId,
@@ -141,7 +149,9 @@ const BoardList = () => {
   return (
     <div id="board-list-wrap">
       <div className="board-list-top">
-        <div className="list-write-title">{category?.categoryName}게시물</div>
+        <div className="list-write-title">
+          {categoryId ? category?.categoryName : "전체"}게시물
+        </div>
       </div>
       <div className="board-list-mid">
         {/* {boards && (

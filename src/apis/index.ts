@@ -24,8 +24,8 @@ import { Board } from "../types/interface";
 import Pageable from "../types/interface/pageable.interface";
 
 // const DOMAIN = "http://54.180.152.3:8080";
-const DOMAIN = process.env.REACT_APP_API_DOMAIN;
-// const DOMAIN = "http://127.0.0.1:8080";
+// const DOMAIN = process.env.REACT_APP_API_DOMAIN;
+const DOMAIN = "http://127.0.0.1:8080";
 const API_DOMAIN = `${DOMAIN}/api`;
 export const BACK_DOMAIN = () => DOMAIN;
 const authorication = (accessToken: string) => {
@@ -123,21 +123,21 @@ export const getLoginUser = async (userEmail: string) => {
 // 파일 저장
 const SAVE_IMAGE = () => `${DOMAIN}/file/save/temp/image`;
 export const saveTempImage = async (
-    accessToken: string,
-    file: FormData | null | undefined
+  accessToken: string,
+  file: FormData | null | undefined
 ) => {
-    console.log("SAVE_IMAGE 실행");
-    alert("SAVE_IMAGE 실행");
-    return await axios
-        .post(SAVE_IMAGE(), file, {
-            ...tokenAndPageConfig.multipartAndToken(accessToken),
-        })
-        .then((response) => {
-            return response.data as FileResponseDto;
-        })
-        .catch((error) => {
-            return errorResponse(error);
-        });
+  console.log("SAVE_IMAGE 실행");
+  alert("SAVE_IMAGE 실행");
+  return await axios
+    .post(SAVE_IMAGE(), file, {
+      ...tokenAndPageConfig.multipartAndToken(accessToken),
+    })
+    .then((response) => {
+      return response.data as FileResponseDto;
+    })
+    .catch((error) => {
+      return errorResponse(error);
+    });
 };
 // 닉네임 중복 확인
 const NICKNAME_DUPL_CHK = (nickname: string) =>
