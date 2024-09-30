@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import "./style.css";
-import { useNavigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import {
   deleteUserRequest,
   editUser,
@@ -237,7 +237,9 @@ const UserPage = () => {
           <div className="top-left">
             <div className="top-left-item1">내프로필</div>
             <div className="top-left-item2">프로필 수정</div>
-            <div className="top-left-item3">비밀번호 변경</div>
+            <div className="top-left-item3" onClick={passwordModifyPage}>
+              비밀번호 변경
+            </div>
           </div>
 
           <div id="top-right">
@@ -310,7 +312,7 @@ const UserPage = () => {
 
   const Index = () => {
     const [cookies, setCookies] = useCookies();
-
+    const navigate = useNavigate();
     const inputRef = useRef<HTMLInputElement | null>(null);
     const [password, setPassword] = useState<string>("");
 
@@ -334,7 +336,8 @@ const UserPage = () => {
       }
       const { code } = response;
       if (code === "NU") {
-        alert("비밀번호가 틀렸습니다.");
+        alert("비밀번호가 일치하지 않습니다.");
+        inputRef.current?.focus();
         return;
       }
       ResponseUtil(response);
@@ -343,25 +346,38 @@ const UserPage = () => {
         setCurrentPage("edit");
       }
     };
+    const onMainClickHandler = () => {
+      navigate(MAIN_PATH());
+    };
     return (
       <div className={"user-info-box-wrap"}>
         <div className={"user-info-box"}>
-          <div className={"user-info-title"}>본인확인</div>
-          <div className={"user-info-input-box"}>
-            <div className={"input-box"}>
-              <input
-                placeholder={"비밀번호를 입력해주세요."}
-                onChange={passwordChange}
-                onKeyDown={passwordKeydown}
-                type={"password"}
-                value={password}
-                className={"password-input"}
-                ref={inputRef}
-              />
+          <div className="user-info-top">
+            <div className="user-info-top-image"></div>
+            <div className={"user-info-title"}>
+              본인확인을 위해 <br /> 비밀번호를 입력해주세요.
             </div>
-            <div className={"button"} onClick={passwordCheck}>
-              입력
+          </div>
+          <div className="user-info-mid">
+            <div className={"user-info-input-box"}>
+              <div className={"input-box"}>
+                <input
+                  placeholder={"비밀번호를 입력해주세요."}
+                  onChange={passwordChange}
+                  onKeyDown={passwordKeydown}
+                  type={"password"}
+                  value={password}
+                  className={"password-input"}
+                  ref={inputRef}
+                />
+              </div>
+              <div className={"button"} onClick={passwordCheck}>
+                입력
+              </div>
             </div>
+          </div>
+          <div className="user-info-bottom" onClick={onMainClickHandler}>
+            메인으로
           </div>
         </div>
       </div>
@@ -772,6 +788,13 @@ const UserPage = () => {
       setIsChecked(event.target.checked);
     };
 
+    const handleCheckboxClick = () => {
+      if (checkBoxRef.current) {
+        checkBoxRef.current.checked = !checkBoxRef.current.checked; // 체크 상태 반전
+        setIsChecked(checkBoxRef.current.checked); // 상태 동기화
+      }
+    };
+
     const handlePageTransitionToPage2 = () => {
       // 페이지 전환 로직
       setDeleteUserPage(2);
@@ -780,6 +803,8 @@ const UserPage = () => {
     const warnIfNotChecked = () => {
       alert("회원탈퇴 시 유의사항을 확인하고 동의에 체크해주세요.");
     };
+
+    const checkBoxRef = useRef<HTMLInputElement | null>(null);
 
     return (
       <>
@@ -859,11 +884,12 @@ const UserPage = () => {
                       type="checkbox"
                       id="acceptTerms"
                       checked={isChecked}
+                      ref={checkBoxRef}
                       onChange={handleCheckboxChange}
                     />
                     <span className="checkmark"></span>
                   </label>
-                  <div>
+                  <div onClick={handleCheckboxClick}>
                     회원탈퇴 시 유의사항을 확인하였으며, 모두 동의합니다.
                   </div>
                 </div>

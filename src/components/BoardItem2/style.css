@@ -98,7 +98,7 @@
 }
 
 .board-view-img {
-  width: 40px;
+  width: 33px;
   height: 20px;
   background-image: url(../../assets/image/boarditem-view.png);
   background-size: 95% 100%;
@@ -113,4 +113,19 @@
 
 .recent-board-item-category {
   margin-left: 8px;
+  border-right: 1px solid #dbdfe2;
+  border-left: 1px solid #dbdfe2;
+
+  padding: 0px 12px;
+  margin: 0px 10px;
+}
+
+.view-count {
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.recent-board-item-nickname {
+  margin-right: 10px;
 }

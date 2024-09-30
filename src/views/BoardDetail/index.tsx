@@ -280,7 +280,7 @@ const BoardDetail = () => {
 
           {/* <div className="board-detail-mid-left"> */}
           <div className="board-detail-top-right" onClick={writerClickEvent}>
-            {writer?.profileImage ? (
+            {writer?.profileImage && writer?.active ? (
               <div className="board-detail-profile-img-box">
                 <div
                   className="profile-img"
@@ -290,8 +290,14 @@ const BoardDetail = () => {
             ) : (
               <div className="board-detail-profile-img"></div>
             )}
-            <div className="board-detail-profile-name">{writer?.nickname}</div>
-            {nicknameDrop && (
+            {writer?.active ? (
+              <div className="board-detail-profile-name">
+                {writer?.nickname}
+              </div>
+            ) : (
+              "탈퇴한 회원"
+            )}
+            {nicknameDrop && writer?.active && (
               <>
                 <div className="user-information-box">
                   <div
