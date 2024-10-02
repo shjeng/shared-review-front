@@ -24,8 +24,8 @@ import { Board } from "../types/interface";
 import Pageable from "../types/interface/pageable.interface";
 
 // const DOMAIN = "http://54.180.152.3:8080";
-// const DOMAIN = process.env.REACT_APP_API_DOMAIN;
-const DOMAIN = "http://127.0.0.1:8080";
+const DOMAIN = process.env.REACT_APP_API_DOMAIN;
+// const DOMAIN = "http://127.0.0.1:8080";
 const API_DOMAIN = `${DOMAIN}/api`;
 export const BACK_DOMAIN = () => DOMAIN;
 const authorication = (accessToken: string) => {
