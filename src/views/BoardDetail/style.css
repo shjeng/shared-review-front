@@ -21,6 +21,8 @@
   height: 80px;
   background-color: #f2f2f2;
   border-bottom: 1px solid #c7c7c7;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
 }
 
 .board-detail-top-left,
@@ -83,10 +85,10 @@
   display: flex;
   flex-direction: column;
 }
-.board-detail img{
-    width: 100%;
-    height: auto;
-    margin-bottom: 20px;
+.board-detail img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
 }
 .board-detail {
   width: 100%;
@@ -94,6 +96,8 @@
 .board-detail-bottom {
   background-color: #fff;
   padding: 25px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
 }
 .board-detail-profile-img-box {
   width: 38px;
@@ -300,4 +304,3 @@
 .error {
   border: 1px solid #ff0000;
 }
-
