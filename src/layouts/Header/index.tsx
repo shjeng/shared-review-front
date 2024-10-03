@@ -19,11 +19,12 @@ import {
 } from "../../apis/response/board";
 import ResponseDto from "../../apis/response/response.dto";
 import { Category } from "../../types/interface";
+import useOutsideClick from "../../hooks/useOutsideClick.hook"; // 추가된 부분
 
 const Header = () => {
-  const navigator = useNavigate();
+  //      state: 드롭다운 상태      //
   const [searchCategoryDrop, setSearchCategoryDrop] = useState(false);
-  const [profileDrop, setprofileDrop] = useState(false);
+  const [profileDrop, setProfileDrop] = useState(false);
   const { loginUser } = useLoginUserStore();
   const {
     categoryId,
@@ -36,27 +37,21 @@ const Header = () => {
   const searchDropRef = useRef<any>(null);
   const [categorys, setCategorys] = useState<Category[]>([]);
   const [category, setCategory] = useState<Category | undefined>();
-  const [keyword, setKeyword] = useState<string>("");
+  // const [keyword, setKeyword] = useState<string>("");
+  //        function: 네비게이트 함수     //
+  const navigate = useNavigate();
 
   const searchTypeClick = (searchType: string) => {
     setSearchType(searchType);
     setSearchCategoryDrop(false);
   };
-  const handleClickOutside = (e: MouseEvent) => {
-    if (
-      searchCategoryDrop &&
-      searchDropRef.current &&
-      !searchDropRef.current.contains(e.target as Node)
-    ) {
+
+  // 커스텀 훅 사용
+  useOutsideClick(searchDropRef, () => {
+    if (searchCategoryDrop) {
       setSearchCategoryDrop(false);
     }
-  };
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [searchCategoryDrop]);
+  });
 
   // 헤더 검색 부분 드롭다운
   const toggleDropdown = () => {
@@ -91,16 +86,24 @@ const Header = () => {
     setSearchWord("");
     setSearchType("all");
     toggleCategoryDropdown();
-    navigator(BOARD_LIST());
+    navigate(BOARD_LIST());
   };
   // const categoryBoardList
 
-  const profileDropdown = () => {
-    setprofileDrop(!profileDrop);
-  };
+  // =========== 오른쪽 상단 프로필 영역==============
+  const profileDropRef = useRef<any>(null);
 
-  //        function: 네비게이트 함수     //
-  const navigate = useNavigate();
+  // 커스텀 훅 사용
+  useOutsideClick(profileDropRef, () => {
+    if (profileDrop) {
+      setProfileDrop(false);
+    }
+  });
+
+  const profileDropdown = () => {
+    setProfileDrop(!profileDrop);
+  };
+  // =========== 오른쪽 상단 프로필 영역==============
 
   const myPage = () => {
     if (!loginUser) {
@@ -110,7 +113,7 @@ const Header = () => {
     if (window.location.pathname === targetPath) {
       window.location.reload();
     } else {
-      navigator(targetPath);
+      navigate(targetPath);
     }
   };
   //      event handler: 로고 클릭 이벤트 처리 함수       //
@@ -146,7 +149,7 @@ const Header = () => {
     }
     setSearchWord(inputValue);
     setCategoryId(category?.categoryId);
-    navigator(BOARD_LIST());
+    navigate(BOARD_LIST());
   };
 
   const keywordKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -166,22 +169,12 @@ const Header = () => {
   const [categoryDrop, setCategoryDrop] = useState(false);
   const categoryDropRef = useRef<any>(null);
 
-  const handleCategoryClickOutside = (e: MouseEvent) => {
-    if (
-      categoryDrop &&
-      categoryDropRef.current &&
-      !categoryDropRef.current.contains(e.target)
-    ) {
-      toggleCategoryDropdown();
+  // 커스텀 훅 사용
+  useOutsideClick(categoryDropRef, () => {
+    if (categoryDrop) {
+      setCategoryDrop(false);
     }
-  };
-
-  useEffect(() => {
-    document.addEventListener("mousedown", handleCategoryClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleCategoryClickOutside);
-    };
-  }, [categoryDrop]);
+  });
 
   const toggleCategoryDropdown = () => {
     setCategoryDrop(!categoryDrop);
@@ -292,7 +285,11 @@ const Header = () => {
         </div>
         {loginUser ? (
           <>
-            <div className="header-right-box" onClick={profileDropdown}>
+            <div
+              className="header-right-box"
+              onClick={profileDropdown}
+              ref={profileDropRef}
+            >
               <div className="profile-dropdown-box">
                 {loginUser.profileImage ? (
                   <div

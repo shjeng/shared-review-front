@@ -60,6 +60,7 @@ const AdminUserList = () => {
     { label: "이메일", field: "email" },
     { label: "가입일", field: "writerDate" },
     { label: "권한", field: "authority" },
+    { label: "회원상태", field: "active" },
   ];
 
   const handleSearch = (searchValue: string, inputValue: string) => {
@@ -131,8 +132,7 @@ const AdminUserList = () => {
                   {label}
                 </div>
               ))}
-              <div className="classification-state">회원상태</div>
-              <div className="classification-withdrawal-time">탈퇴일</div>
+              <div className="classification-withdrawal-time">탈퇴날짜</div>
 
               <div className="classification-actions">action</div>
             </div>
@@ -148,7 +148,7 @@ const AdminUserList = () => {
                     {/* 날짜형식 백에서 처리하기 */}
                   </div>
                   <div className="userList-item-authority">{user.admin}</div>
-                  <div className="userList-item-state">
+                  <div className="userList-item-active">
                     {user.active ? "유효" : "탈퇴"}
                   </div>
                   <div className="userList-item-withdrawal-time">

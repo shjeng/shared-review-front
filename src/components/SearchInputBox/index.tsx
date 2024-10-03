@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./style.css";
+import useOutsideClick from "../../hooks/useOutsideClick.hook";
 
 // interface: Input Box 컴포넌트 Properties
 interface Props {
@@ -12,7 +13,6 @@ const SearchInputBox = ({ columns, onSearch }: Props) => {
   const [search, setSearch] = useState<string>("검색기준");
   const [searchValue, setSearchValue] = useState<string>("");
 
-  const [dropdownValue, setDropdownValue] = useState<string>("");
   const [inputValue, setInputValue] = useState<string>("");
 
   const searchInputRef = useRef<any>(null);
@@ -20,6 +20,14 @@ const SearchInputBox = ({ columns, onSearch }: Props) => {
   const toggleDropdown = () => {
     setSearchDrop(!searchDrop);
   };
+  const dropdownRef = useRef<any>(null);
+
+  // 커스텀 훅 사용
+  useOutsideClick(dropdownRef, () => {
+    if (searchDrop) {
+      setSearchDrop(false);
+    }
+  });
 
   const onSearchClick = (label: string, field: string) => {
     setSearch(label);
@@ -56,7 +64,7 @@ const SearchInputBox = ({ columns, onSearch }: Props) => {
     <>
       <div className="admin-categori-bottom-top">
         <div className="header-category">
-          <div className="header-category-dropdown">
+          <div className="header-category-dropdown" ref={dropdownRef}>
             <div className="dropdown-box" onClick={toggleDropdown}>
               <div className="dropdown_text">{search}</div>
               <div className="dropdown_icon"></div>
@@ -67,7 +75,7 @@ const SearchInputBox = ({ columns, onSearch }: Props) => {
                   <div
                     key={field}
                     className="board-dropdown-content-item"
-                    onClick={() => onSearchClick(label, field)}
+                    onClick={(e) => onSearchClick(label, field)}
                   >
                     {label}
                   </div>
