@@ -21,6 +21,7 @@ import loginUserStore from "../../store/login-user.store";
 import axios from "axios";
 import Editor from "../../components/Editor";
 import ReactQuill from "react-quill";
+import useOutsideClick from "../../hooks/useOutsideClick.hook";
 
 const BoardWrite = () => {
   const [cookies, setCookies] = useCookies();
@@ -51,10 +52,8 @@ const BoardWrite = () => {
       navigator(MAIN_PATH());
       return;
     }
-
     getCategorysReqeust().then(getCategorysResponse);
   }, []);
-
 
   const getCategorysResponse = (
     responseBody: GetCategorysResponseDto | ResponseDto | null
@@ -73,10 +72,6 @@ const BoardWrite = () => {
     setCategorys(result.categorys);
   };
 
-  const toggleDropdown = () => {
-    setCategoryDrop(!categoryDrop);
-  };
-
   const onTitleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setTitle(value);
@@ -84,9 +79,7 @@ const BoardWrite = () => {
   };
   const onCategoryClick = (category: Category) => {
     setCategory(category);
-  };
-  const onContentChange = () => {
-    // 에디터 내용 content
+    setCategoryDrop(!categoryDrop);
   };
 
   // 작성 버튼 클릭
@@ -146,10 +139,14 @@ const BoardWrite = () => {
   const searchInputRef = useRef<any>(null);
 
   // 카테고리 드롭다운 박스 외부를 클릭했을 때 드롭다운을 닫는 기능
-  const handleClickOutside = () => {
+  useOutsideClick(searchInputRef, () => {
     if (categoryDrop) {
       setCategoryDrop(false);
     }
+  });
+
+  const toggleDropdown = () => {
+    setCategoryDrop(!categoryDrop);
   };
 
   // event handler:  Tag
@@ -180,22 +177,16 @@ const BoardWrite = () => {
   // };
 
   return (
-    <div id="board-write-wrap" onClick={handleClickOutside}>
+    <div id="board-write-wrap">
       <div className="board-write-top">
         <div className="board-title">게시물 작성</div>
 
         <div className="function-line">
           <div className="board-category" ref={searchInputRef}>
             <div className="board-dropdown-box" onClick={toggleDropdown}>
-              {category ? (
-                <div className="board-dropdown-text" ref={dropdownRef}>
-                  {category?.categoryName}
-                </div>
-              ) : (
-                <div className="board-dropdown-text" ref={dropdownRef}>
-                  카테고리
-                </div>
-              )}
+              <div className="board-dropdown-text" ref={dropdownRef}>
+                {category ? category.categoryName : "카테고리"}
+              </div>
 
               <div className="board-dropdown-icon"></div>
             </div>
@@ -239,7 +230,11 @@ const BoardWrite = () => {
             />
           </div>
           <div className="editor_box">
-            <Editor editorRef={editorRef} setContentHtml={setContentHtml} editorIds={editorIds}/>
+            <Editor
+              editorRef={editorRef}
+              setContentHtml={setContentHtml}
+              editorIds={editorIds}
+            />
           </div>
           <div className="board-main">
             {/*<div className="board-detail"></div>*/}

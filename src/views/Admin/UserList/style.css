@@ -36,8 +36,8 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.098);
 }
 
-.classification-state,
-.userList-item-state {
+.classification-active,
+.userList-item-active {
   width: 90px;
   height: 56px;
   display: flex;
