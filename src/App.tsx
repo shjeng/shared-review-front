@@ -5,7 +5,7 @@ import Container from "./layouts/Container";
 import {
   ADMIN_BOARD_LIST,
   AUTH_PATH,
-  BOARD_DETAIL,
+  BOARD_DETAIL, BOARD_EDIT,
   BOARD_LIST,
   BOARD_WRITE,
   CATEGORI_MANAGE_PATH,
@@ -78,7 +78,7 @@ function App() {
         <Route path={USER_MANAGE_PATH()} element={<AdminUserList />} />
         <Route path={CATEGORI_MANAGE_PATH()} element={<AdminCategories />} />
         <Route path={ADMIN_BOARD_LIST()} element={<AdminBoardList />} />
-
+        <Route path={BOARD_EDIT(":boardId")} element={<BoardWrite />} />
         <Route path={FIND_PASSWORD_PATH()} element={<FindPassword />} />
 
         {/* <Route path={AUTH_PATH()} element={<Authentication />} /> */}

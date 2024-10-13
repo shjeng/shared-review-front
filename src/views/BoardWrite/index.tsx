@@ -1,29 +1,26 @@
 import "./style.css";
-import React, {
-  ChangeEvent,
-  KeyboardEvent,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import { BACK_DOMAIN, getCategorysReqeust, postBoard } from "../../apis";
+import React, {ChangeEvent, KeyboardEvent, useEffect, useRef, useState,} from "react";
+import {getBoardRequest, getCategorysReqeust, postBoard} from "../../apis";
 import {
+  GetBoardDetailResponseDto,
   GetCategorysResponseDto,
   PostBoardWriteResponseDto,
 } from "../../apis/response/board";
 import ResponseDto from "../../apis/response/response.dto";
-import { Category } from "../../types/interface";
-import { BoardWriteRequestDto } from "../../apis/request/board";
-import { useCookies } from "react-cookie";
-import { useNavigate } from "react-router-dom";
-import { BOARD_DETAIL, MAIN_PATH } from "../../constant";
+import {Category} from "../../types/interface";
+import {BoardWriteRequestDto} from "../../apis/request/board";
+import {useCookies} from "react-cookie";
+import {useNavigate, useParams} from "react-router-dom";
+import {BOARD_DETAIL, MAIN_PATH} from "../../constant";
 import loginUserStore from "../../store/login-user.store";
-import axios from "axios";
 import Editor from "../../components/Editor";
 import ReactQuill from "react-quill";
 import useOutsideClick from "../../hooks/useOutsideClick.hook";
+import {ResponseCode} from "../../types/enum";
 
 const BoardWrite = () => {
+  const { boardId } = useParams();
+
   const [cookies, setCookies] = useCookies();
   const navigator = useNavigate();
   const titleRef = useRef<HTMLInputElement | null>(null);
@@ -52,8 +49,47 @@ const BoardWrite = () => {
       navigator(MAIN_PATH());
       return;
     }
+
     getCategorysReqeust().then(getCategorysResponse);
   }, []);
+
+  useEffect(() => {
+    if(boardId !== null && boardId !== undefined){
+      getBoardRequest(boardId).then((response) => {
+        console.log("Board Content:", response);
+        getBoardResponse(response);
+      });
+    }
+  }, [boardId]);
+
+  const getBoardResponse = (
+      responseBody: GetBoardDetailResponseDto | ResponseDto | null
+  ) => {
+    if (!responseBody) {
+      alert("네트워크 오류");
+      navigator(MAIN_PATH());
+      return;
+    }
+    const { code } = responseBody;
+    if (code === ResponseCode.NOT_EXISTED_BOARD) {
+      alert("존재하지 않는 게시물입니다.");
+    }
+    if (code !== ResponseCode.SUCCESS) {
+      navigator(MAIN_PATH());
+    }
+    const result = responseBody as GetBoardDetailResponseDto;
+    setTitle(result.boardDetail.title);
+    setContent(result.boardDetail.content);
+    setContentHtml(result.boardDetail.content);
+    setCategory(result.boardDetail.category);
+    onCategoryClick(result.boardDetail.category);
+    setTags(result.tags.map((tag) => tag.name));
+    if (result.user.email !== loginUser?.email) {
+      alert("작성자만 수정할 수 있습니다.");
+      navigator(MAIN_PATH());
+    }
+    setContentMarkdown(result.boardDetail.content);
+  };
 
   const getCategorysResponse = (
     responseBody: GetCategorysResponseDto | ResponseDto | null
@@ -116,7 +152,11 @@ const BoardWrite = () => {
       editorImageIds: editorIds.current,
       tags,
     };
-    postBoard(reqeustBody, cookies.accessToken).then(postResponse);
+    if (boardId) {
+
+    } else {
+      postBoard(reqeustBody, cookies.accessToken).then(postResponse);
+    }
   };
   const postResponse = (
     responseBody: PostBoardWriteResponseDto | ResponseDto | null
@@ -179,7 +219,7 @@ const BoardWrite = () => {
   return (
     <div id="board-write-wrap">
       <div className="board-write-top">
-        <div className="board-title">게시물 작성</div>
+        <div className="board-title">{boardId ? "게시물 수정" : "게시물 작성"}</div>
 
         <div className="function-line">
           <div className="board-category" ref={searchInputRef}>
@@ -210,7 +250,7 @@ const BoardWrite = () => {
           </div>
 
           <div className="board-registered" onClick={onSubmit}>
-            {"등록"}
+            {boardId ? "수정" : "작성"}
           </div>
           {/*
           <div className="board-registered" onClick={onTest}>
@@ -230,11 +270,8 @@ const BoardWrite = () => {
             />
           </div>
           <div className="editor_box">
-            <Editor
-              editorRef={editorRef}
-              setContentHtml={setContentHtml}
-              editorIds={editorIds}
-            />
+
+            <Editor editorRef={editorRef} setContentHtml={setContentHtml} editorIds={editorIds} value={contentHtml}/>
           </div>
           <div className="board-main">
             {/*<div className="board-detail"></div>*/}

@@ -14,6 +14,7 @@ import {
   IncreaseViewCountResponseDto,
 } from "../../apis/response/board";
 import {
+  BOARD_EDIT,
   BOARD_LIST,
   MAIN_PATH,
   USER_BOARD,
@@ -199,7 +200,9 @@ const BoardDetail = () => {
   };
   //      event handler: 게시글 목록 클릭 이벤트 처리 함수       //
   const onBoardListClickHandler = () => {
-    navigator(BOARD_LIST());
+    if (boardId) {
+      navigator(BOARD_EDIT(boardId));
+    }
   };
 
   const pageButtonClick = (page: number) => {

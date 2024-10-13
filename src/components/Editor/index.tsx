@@ -27,8 +27,9 @@ interface Props {
     editorRef: React.RefObject<ReactQuill>;
     setContentHtml: (content: string) => void;
     editorIds: React.MutableRefObject<bigint[]>;
+    value?: string;
 }
-const Editor = ({editorRef, setContentHtml, editorIds}: Props) => {
+const Editor = ({editorRef, setContentHtml, editorIds, value}: Props) => {
     const imageHandler = () => {
 
         // 1. 이미지를 저장할 input type=file DOM을 만든다.
@@ -112,7 +113,9 @@ const Editor = ({editorRef, setContentHtml, editorIds}: Props) => {
                     modules={modules}
                     formats={formats}
                     style={{height: "100%", width: "100%"}}
+                    value={value}
                     onChange={setContentHtml}/>
+
     );
 };
 
