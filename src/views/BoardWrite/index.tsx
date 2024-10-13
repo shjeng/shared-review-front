@@ -79,7 +79,6 @@ const BoardWrite = () => {
     }
     const result = responseBody as GetBoardDetailResponseDto;
     setTitle(result.boardDetail.title);
-    setContent(result.boardDetail.content);
     setContentHtml(result.boardDetail.content);
     setCategory(result.boardDetail.category);
     onCategoryClick(result.boardDetail.category);
